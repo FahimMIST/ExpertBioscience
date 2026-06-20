@@ -1,0 +1,6 @@
+{
+  "name": "Expert Bioscience",
+  "description": "Premium fish medicines, probiotics, disinfectants, oxygen tablets, and diagnostics for high-yield sustainable aquaculture in Bangladesh.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

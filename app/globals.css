@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-sans), var(--font-bangla), system-ui, -apple-system, sans-serif;
+  --font-bangla: var(--font-bangla), system-ui, sans-serif;
+
+  --color-brand-red: #e11922;
+  --color-brand-red-hover: #b81017;
+  --color-brand-teal: #009660;
+  --color-brand-blue: #2b3b90;
+  
+  --color-aqua-dark: #ffffff; /* White background for light theme */
+  --color-aqua-deep: #f8fafc; /* Crisp light grey/white */
+  --color-aqua-mid: #cbd5e1;  /* Slate border tint */
+  --color-aqua-light: #f1f5f9; /* Soft tint */
+  --color-aqua-primary: #e11922; /* Red accent */
+  --color-aqua-cyan: #ff3344; /* Light red secondary */
+  --color-aqua-teal: #1e293b; /* Slate text/accent */
+}
+
+@layer base {
+  body {
+    background-color: #ffffff;
+    color: #0f172a;
+    font-family: var(--font-sans);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Bento Box Card Effects - light mode with red hint */
+.aqua-glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px) saturate(120%);
+  border: 1px solid rgba(225, 25, 34, 0.12);
+}
+
+.aqua-glow {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.aqua-glow-hover:hover {
+  box-shadow: 0 0 25px rgba(225, 25, 34, 0.08), inset 0 1px 2px rgba(255, 255, 255, 1);
+  border-color: rgba(225, 25, 34, 0.35);
+}
+
+/* Modern Bento Cell class helper - tailored for Red/White/Black light theme */
+.bento-cell {
+  background: #ffffff;
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(225, 25, 34, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bento-cell:hover {
+  border-color: rgba(225, 25, 34, 0.25);
+  box-shadow: 0 10px 40px -15px rgba(225, 25, 34, 0.12);
+  transform: translateY(-2px);
+}
