@@ -38,6 +38,11 @@ export const metadata: Metadata = {
     address: true,
     telephone: true,
   },
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
+  },
   metadataBase: new URL('https://expertbioscience.com'),
   alternates: {
     canonical: '/',

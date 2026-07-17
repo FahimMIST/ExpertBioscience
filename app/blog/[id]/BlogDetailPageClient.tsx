@@ -144,13 +144,54 @@ export default function BlogDetailPageClient({ post }: Props) {
             {/* Article Content Body */}
             <div className="space-y-6">
               {data.content.map((paragraph, index) => {
+                if (paragraph.startsWith('[TABLE]:')) {
+                  const tableContent = paragraph.replace('[TABLE]:', '').trim();
+                  const lines = tableContent.split('\n').filter(line => line.trim().length > 0);
+                  
+                  const rows = lines.map(line => 
+                    line.split('|').map(cell => cell.trim()).filter((_, i, arr) => i > 0 && i < arr.length - 1)
+                  ).filter(row => row.length > 0 && !row.every(cell => cell.startsWith('---')));
+
+                  if (rows.length === 0) return null;
+
+                  const headers = rows[0];
+                  const bodyRows = rows.slice(1);
+
+                  return (
+                    <div key={index} className="my-8 overflow-x-auto rounded-2xl border border-slate-200/80 shadow-md bg-white">
+                      <table className="min-w-full divide-y divide-slate-200 text-left font-sans text-sm">
+                        <thead className="bg-slate-50">
+                          <tr>
+                            {headers.map((header, hIdx) => (
+                              <th key={hIdx} className="px-5 py-4 font-extrabold text-slate-800 bg-slate-100 border-b border-slate-200">
+                                {header}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody className="bg-white divide-y divide-slate-150">
+                          {bodyRows.map((row, rIdx) => (
+                            <tr key={rIdx} className={rIdx % 2 === 0 ? 'bg-white' : 'bg-slate-50/40'}>
+                              {row.map((cell, cIdx) => (
+                                <td key={cIdx} className="px-5 py-4 text-slate-700 font-semibold whitespace-pre-line border-b border-slate-100">
+                                  {cell}
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  );
+                }
+
                 const parts = paragraph.split(': ');
                 return (
                   <p key={index} className="text-base text-slate-750 leading-relaxed font-sans text-left">
                     {parts.length > 1 ? (
                       <>
                         <strong className="text-brand-red text-lg block mb-1 font-extrabold">{parts[0]}</strong>
-                        <span className="text-slate-800">{parts[1]}</span>
+                        <span className="text-slate-800">{parts.slice(1).join(': ')}</span>
                       </>
                     ) : (
                       <span className="text-slate-800">{paragraph}</span>
@@ -161,7 +202,7 @@ export default function BlogDetailPageClient({ post }: Props) {
             </div>
 
             {/* Footer and diagnostic CTA */}
-            {(post.id === 'carp-magur-stocking' || post.id === 'gulsha-farming-guide' || post.id === 'gulsha-fingerling-pond-prep') && (
+            {(post.id === 'carp-magur-stocking' || post.id === 'gulsha-farming-guide' || post.id === 'gulsha-fingerling-pond-prep' || post.id === 'tilapia-history-intro' || post.id === 'tilapia-nursing-management' || post.id === 'ideal-fish-stocking-density') && (
               <div className="mt-12 p-6 rounded-2xl bg-rose-50 border border-brand-red/15 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xs">
                 <div className="flex items-start gap-4 text-left">
                   <div className="p-3 bg-brand-red/10 rounded-xl text-brand-red">

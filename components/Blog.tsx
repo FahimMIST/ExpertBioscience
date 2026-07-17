@@ -99,13 +99,54 @@ export default function Blog({ lang }: BlogProps) {
                         className="space-y-4 pt-4 border-t border-slate-200"
                       >
                         {data.content.map((paragraph, index) => {
+                          if (paragraph.startsWith('[TABLE]:')) {
+                            const tableContent = paragraph.replace('[TABLE]:', '').trim();
+                            const lines = tableContent.split('\n').filter(line => line.trim().length > 0);
+                            
+                            const rows = lines.map(line => 
+                              line.split('|').map(cell => cell.trim()).filter((_, i, arr) => i > 0 && i < arr.length - 1)
+                            ).filter(row => row.length > 0 && !row.every(cell => cell.startsWith('---')));
+
+                            if (rows.length === 0) return null;
+
+                            const headers = rows[0];
+                            const bodyRows = rows.slice(1);
+
+                            return (
+                              <div key={index} className="my-6 overflow-x-auto rounded-xl border border-slate-200/60 shadow-xs">
+                                <table className="min-w-full divide-y divide-slate-200 text-left font-sans text-xs">
+                                  <thead className="bg-slate-50">
+                                    <tr>
+                                      {headers.map((header, hIdx) => (
+                                        <th key={hIdx} className="px-3 py-2.5 font-bold text-slate-700 bg-slate-100 border-b border-slate-200">
+                                          {header}
+                                        </th>
+                                      ))}
+                                    </tr>
+                                  </thead>
+                                  <tbody className="bg-white divide-y divide-slate-100">
+                                    {bodyRows.map((row, rIdx) => (
+                                      <tr key={rIdx} className={rIdx % 2 === 0 ? 'bg-white' : 'bg-slate-50/40'}>
+                                        {row.map((cell, cIdx) => (
+                                          <td key={cIdx} className="px-3 py-2.5 text-slate-600 font-medium whitespace-pre-line border-b border-slate-100">
+                                            {cell}
+                                          </td>
+                                        ))}
+                                      </tr>
+                                    ))}
+                                  </tbody>
+                                </table>
+                              </div>
+                            );
+                          }
+
                           const parts = paragraph.split(': ');
                           return (
                             <p key={index} className="text-sm text-slate-650 leading-relaxed font-sans text-left">
                               {parts.length > 1 ? (
                                 <>
                                   <strong className="text-brand-red block mb-1 font-bold">{parts[0]}</strong>
-                                  <span>{parts[1]}</span>
+                                  <span>{parts.slice(1).join(': ')}</span>
                                 </>
                               ) : (
                                 paragraph
@@ -113,7 +154,7 @@ export default function Blog({ lang }: BlogProps) {
                             </p>
                           );
                         })}
-                        {(post.id === 'carp-magur-stocking' || post.id === 'gulsha-farming-guide' || post.id === 'gulsha-fingerling-pond-prep') && (
+                        {(post.id === 'carp-magur-stocking' || post.id === 'gulsha-farming-guide' || post.id === 'gulsha-fingerling-pond-prep' || post.id === 'ideal-fish-stocking-density') && (
                           <div className="mt-6 p-4 rounded-xl bg-rose-50 border border-brand-red/15 flex flex-col sm:flex-row items-center justify-between gap-4">
                             <div className="flex items-start gap-3 text-left">
                               <Stethoscope className="text-brand-red shrink-0 mt-0.5" size={20} />
