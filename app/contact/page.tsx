@@ -41,6 +41,7 @@ export default function ContactPage() {
     { name: lang === 'bn' ? 'মোঃ আকতারুজ্জামান (হেড অফ সেলস)' : 'Md. Aktaruzzaman (Head of Sales)', phone: '01718-583226' },
     { name: lang === 'bn' ? 'মোঃ রাজিবুল ইসলাম (টেকনিক্যাল কনসালট্যান্ট)' : 'Md. Rajibul Islam (Technical Consultant)', phone: '01677-425150' },
     { name: lang === 'bn' ? 'অফিস হেল্পডেস্ক (সাধারণ জিজ্ঞাসা)' : 'Office Helpdesk (General Queries)', phone: '01912-870915' },
+    { name: lang === 'bn' ? 'অফিসিয়াল হোয়াটসঅ্যাপ সাপোর্ট (২৪/৭)' : 'Official WhatsApp Support (24/7)', phone: '+880 1911-865076', isWhatsApp: true },
   ];
 
   const regionalDealers = [
@@ -128,10 +129,16 @@ export default function ContactPage() {
                         <p className="text-sm font-extrabold text-slate-800 mt-0.5">{item.phone}</p>
                       </div>
                       <a
-                        href={`tel:${item.phone}`}
-                        className="py-1.5 px-3 rounded-lg bg-brand-red/10 hover:bg-brand-red/25 border border-brand-red/30 text-brand-red font-sans text-xs font-bold transition-all"
+                        href={item.isWhatsApp ? 'https://wa.me/8801911865076' : `tel:${item.phone}`}
+                        target={item.isWhatsApp ? '_blank' : undefined}
+                        rel={item.isWhatsApp ? 'noopener noreferrer' : undefined}
+                        className={`py-1.5 px-3 rounded-lg border font-sans text-xs font-bold transition-all ${
+                          item.isWhatsApp 
+                            ? 'bg-emerald-50 hover:bg-emerald-100 border-emerald-300 text-emerald-600' 
+                            : 'bg-brand-red/10 hover:bg-brand-red/25 border-brand-red/30 text-brand-red'
+                        }`}
                       >
-                        {lang === 'bn' ? 'কল' : 'Call'}
+                        {item.isWhatsApp ? (lang === 'bn' ? 'হোয়াটসঅ্যাপ' : 'WhatsApp') : (lang === 'bn' ? 'কল' : 'Call')}
                       </a>
                     </div>
                   ))}

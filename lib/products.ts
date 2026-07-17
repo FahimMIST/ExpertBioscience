@@ -198,10 +198,10 @@ export const PRODUCTS: Product[] = [
       description: 'Farm-safer concentrated sanitizer of highest efficacy to eliminate viral, fungal, and bacterial pathogens.',
       composition: 'Alkyl dimethyl benzyl ammonium chloride 80% + high formulation stabilizers 20%.',
       benefits: [
-        'Extremely effective against tail rot, red spot, body sore, and secondary fungal infections.',
+        'Extremely effective against tail rot, red spot, body sore, and secondary fungal infections in Gulsha, Shing, and Carps.',
         'Quickly sterilizes pond water without affecting dissolved oxygen values.',
         'Safer for organic pond biosystems; does not crash beneficial plankton.',
-        'Improves body shine and scales texture on rui, catla, and shrimp.'
+        'Improves body shine and scales texture on rui, catla, gulsha, and shrimp.'
       ],
       dosage: 'Preventive: 2 - 3 ml per decimal in 3-5 ft water. Curative: 3 - 4 ml per decimal.',
       packSize: '100 ML / 500 ML / 1 Litre Bottle',
@@ -213,9 +213,9 @@ export const PRODUCTS: Product[] = [
       description: 'পুকুর ও ঘেরের সর্বোত্তম সুরক্ষায় ভাইরাস, ব্যাকটেরিয়া ও ছোঁয়াচে ছত্রাক দমনের শক্তিশালী ও নিরাপদ বায়ো-সিকিউরিটি সলিউশন।',
       composition: 'অ্যালকাইল-ডাই-মিথাইল বেনজাইল অ্যামোনিয়াম ক্লোরাইড ৮০% এবং নিষ্ক্রিয় বাহক ২০%।',
       benefits: [
-        'লেজ পঁচা, পাখনা পঁচা, লাল ক্ষত রোগ ও ছোপ ছোপ ফোস্কা রোগ উপশমে অত্যন্ত কার্যকর।',
-        'পানির প্রাকৃতিক গুনাগুণ নষ্ট না করে জীবাণু দ্রুত নিষ্ক্রিয় করে।',
-        'খামারে মাছ ও চিংড়ির ধকল দূর করতে ও স্বাস্থ্য সুরক্ষায় বিশ্বস্ত সঙ্গী।',
+        'গুলসা, শিং ও কার্প জাতীয় মাছের লেজ পঁচা, পাখনা পঁচা, লাল ক্ষত রোগ ও ছোপ ছোপ ফোস্কা রোগ উপশমে অত্যন্ত কার্যকর।',
+        'পানির প্রাকৃতিক গুনাগুণ নষ্ট না করে ক্ষতিকর ব্যাকটেরিয়া ও জীবাণু দ্রুত নিষ্ক্রিয় করে।',
+        'খামারে মাছ ও চিংড়ির ধকল দূর করতে ও নিবিড় রোগ ব্যবস্থাপনায় স্বাস্থ্য সুরক্ষায় বিশ্বস্ত সঙ্গী।',
         'খুবই সাশ্রয়ী এবং কম খরচে দীর্ঘস্থায়ী জলাশয় বিশুদ্ধকরণ।'
       ],
       dosage: 'প্রতিরোধে: ২ - ৩ মিলি প্রতি শতকে (৩-৫ ফুট পানির গভীরতায়)। চিকিৎসায়: ৩ - ৪ মিলি প্রতি শতকে।',

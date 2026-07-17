@@ -18,7 +18,11 @@ import {
   Plus,
   ArrowLeft,
   ChevronDown,
-  CheckCircle
+  CheckCircle,
+  Calculator,
+  Droplets,
+  Activity,
+  FlaskConical
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Link from 'next/link';
@@ -151,6 +155,11 @@ export default function ProductDetailPage({ params }: PageProps) {
   const [openSection, setOpenSection] = useState<'desc' | 'instruction' | 'specs' | null>('desc');
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
+  // States for Oxygen & Dosage Calculator
+  const [pondSize, setPondSize] = useState<number>(33); // 33 decimals default
+  const [pondUnit, setPondUnit] = useState<'decimal' | 'acre'>('decimal');
+  const [fishBiomass, setFishBiomass] = useState<number>(500); // 500 kg default
+
   // Retrieve current product
   const product = useMemo(() => {
     return PRODUCTS.find((p) => p.id === id);
@@ -198,7 +207,7 @@ export default function ProductDetailPage({ params }: PageProps) {
     const preMessage = lang === 'bn'
       ? `হ্যালো এক্সপার্ট বায়োসাইন্স,\nআমি আপনাদের পণ্য "${pDetails.title}" কিনতে চাই এবং পরামর্শের জন্য যুক্ত হতে চাই।`
       : `Hello Expert BioScience,\nI would like to order or consult about your product: "${pDetails.title}".`;
-    const whatsappUrl = `https://wa.me/8801718583226?text=${encodeURIComponent(preMessage)}`;
+    const whatsappUrl = `https://wa.me/8801911865076?text=${encodeURIComponent(preMessage)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -206,7 +215,7 @@ export default function ProductDetailPage({ params }: PageProps) {
     const preMessage = lang === 'bn'
       ? `হ্যালো এক্সপার্ট অ্যাকুয়া ডক্টর ডেস্ক,\nআমি আমার পুকুরের রোগ ও পণ্য "${details.title}" এর ডোজ সম্পর্কে সুনির্দিষ্ট পরামর্শ চাই।`
       : `Hello Expert Aqua-Vets Desk,\nI would like a detailed clinical consulting plan regarding the medication "${details.title}" in my pond.`;
-    const whatsappUrl = `https://wa.me/8801677425150?text=${encodeURIComponent(preMessage)}`;
+    const whatsappUrl = `https://wa.me/8801911865076?text=${encodeURIComponent(preMessage)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -567,6 +576,240 @@ export default function ProductDetailPage({ params }: PageProps) {
             </div>
 
           </div>
+
+          {/* Scientific Oxygen Demand & Oxyadd Dosage Calculator */}
+          {product.id === 'oxyadd' && (
+            <div id="oxygen-calculator" className="mt-16 border-t border-slate-200 pt-16 font-sans">
+              <div className="max-w-4xl mx-auto">
+                {/* Header */}
+                <div className="text-center space-y-2 mb-10 max-w-xl mx-auto">
+                  <span className="text-xs uppercase tracking-widest text-blue-600 font-extrabold flex items-center justify-center gap-1.5 leading-none">
+                    <Calculator size={14} className="text-blue-600" />
+                    {lang === 'bn' ? 'বিজ্ঞানসম্মত ক্যালকুলেটর' : 'Scientific Bio-Calculator'}
+                  </span>
+                  <h2 className="text-2xl sm:text-3xl font-black text-slate-900 leading-tight">
+                    {lang === 'bn' 
+                      ? 'অক্সিজেন চাহিদা ও অক্সিএড ডোজ ক্যালকুলেটর' 
+                      : 'O2 Demand & Oxyadd Dosage Calculator'}
+                  </h2>
+                  <p className="text-xs sm:text-sm text-slate-500">
+                    {lang === 'bn'
+                      ? 'আপনার পুকুরের আয়তন ও মাছের ওজনের ওপর ভিত্তি করে অক্সিজেনের প্রকৃত চাহিদা এবং অক্সিএড এর প্রয়োজনীয় ডোজ হিসাব করুন।'
+                      : 'Calculate precise dissolved oxygen (DO) demand of your fish biomass and the corresponding Oxyadd dosage.'}
+                  </p>
+                </div>
+
+                {/* Calculator Body Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                  {/* Inputs Block */}
+                  <div className="bg-slate-50 p-6 sm:p-8 rounded-[24px] border border-slate-200 flex flex-col justify-between space-y-6 text-left shadow-xs">
+                    <div className="space-y-6">
+                      <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-b border-slate-200 pb-2 flex items-center gap-2">
+                        <Activity size={16} className="text-blue-500" />
+                        {lang === 'bn' ? 'পুকুর ও মাছের প্যারামিটার' : 'Pond & Fish Parameters'}
+                      </h3>
+
+                      {/* Input 1: Pond Size with Unit Toggle */}
+                      <div className="space-y-2">
+                        <div className="flex justify-between items-center">
+                          <label className="text-xs sm:text-sm font-extrabold text-slate-700">
+                            {lang === 'bn' ? 'পুকুরের আয়তন' : 'Pond Size'}
+                          </label>
+                          <div className="flex bg-slate-200 rounded-lg p-0.5 border border-slate-300">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setPondUnit('decimal');
+                                if (pondUnit === 'acre') setPondSize(Math.round(pondSize * 100));
+                              }}
+                              className={`px-2.5 py-1 text-[10px] font-black rounded-md transition-all cursor-pointer ${
+                                pondUnit === 'decimal' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-800'
+                              }`}
+                            >
+                              {lang === 'bn' ? 'শতক' : 'Decimal'}
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setPondUnit('acre');
+                                if (pondUnit === 'decimal') setPondSize(Math.max(1, Math.round(pondSize / 10) / 10));
+                              }}
+                              className={`px-2.5 py-1 text-[10px] font-black rounded-md transition-all cursor-pointer ${
+                                pondUnit === 'acre' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-800'
+                              }`}
+                            >
+                              {lang === 'bn' ? 'একর' : 'Acre'}
+                            </button>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <input
+                            type="range"
+                            min={pondUnit === 'decimal' ? "5" : "0.1"}
+                            max={pondUnit === 'decimal' ? "300" : "5"}
+                            step={pondUnit === 'decimal' ? "1" : "0.1"}
+                            value={pondSize}
+                            onChange={(e) => setPondSize(Number(e.target.value))}
+                            className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                          />
+                          <div className="flex items-center bg-white border border-slate-300 rounded-xl px-3 py-1.5 min-w-[110px] justify-between">
+                            <input
+                              type="number"
+                              value={pondSize}
+                              onChange={(e) => setPondSize(Math.max(0, Number(e.target.value)))}
+                              className="w-full text-xs font-black text-slate-800 focus:outline-hidden text-center"
+                            />
+                            <span className="text-[10px] font-bold text-slate-400 ml-1">
+                              {pondUnit === 'decimal' ? (lang === 'bn' ? 'শতক' : 'Dec') : (lang === 'bn' ? 'একর' : 'Acr')}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Input 2: Fish Biomass */}
+                      <div className="space-y-2">
+                        <div className="flex justify-between items-center">
+                          <label className="text-xs sm:text-sm font-extrabold text-slate-700">
+                            {lang === 'bn' ? 'মোট মাছের আনুমানিক ওজন (বায়োমাস)' : 'Estimated Fish Biomass (Weight)'}
+                          </label>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <input
+                            type="range"
+                            min="50"
+                            max="5000"
+                            step="50"
+                            value={fishBiomass}
+                            onChange={(e) => setFishBiomass(Number(e.target.value))}
+                            className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                          />
+                          <div className="flex items-center bg-white border border-slate-300 rounded-xl px-3 py-1.5 min-w-[110px] justify-between">
+                            <input
+                              type="number"
+                              value={fishBiomass}
+                              onChange={(e) => setFishBiomass(Math.max(0, Number(e.target.value)))}
+                              className="w-full text-xs font-black text-slate-800 focus:outline-hidden text-center"
+                            />
+                            <span className="text-[10px] font-bold text-slate-400 ml-1">
+                              KG
+                            </span>
+                          </div>
+                        </div>
+                        {/* Quick Presets */}
+                        <div className="flex gap-2 pt-1">
+                          {[200, 500, 1000, 2000].map((preset) => (
+                            <button
+                              key={preset}
+                              type="button"
+                              onClick={() => setFishBiomass(preset)}
+                              className={`px-3 py-1 rounded-lg text-[10px] font-black border transition-all cursor-pointer ${
+                                fishBiomass === preset
+                                  ? 'bg-blue-600 text-white border-blue-600 shadow-xs'
+                                  : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-100'
+                              }`}
+                            >
+                              {preset} KG
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Scientific Notice footer */}
+                    <div className="p-3 bg-blue-50/60 rounded-xl border border-blue-100 flex items-start gap-2">
+                      <FlaskConical size={14} className="text-blue-500 shrink-0 mt-0.5" />
+                      <p className="text-[10px] sm:text-[11px] text-slate-600 leading-relaxed text-left">
+                        {lang === 'bn'
+                          ? 'তাত্ত্বিক ভিত্তি: ১ কেজি জীবিত মাছ প্রতি ঘণ্টায় প্রায় ৩০০–৫০০ মিগ্রা. অক্সিজেন গ্রহণ করে। ১ কেজি সোডিয়াম পার-কার্বনেট বিক্রিয়া করে পানিতে প্রায় ১৫৩ গ্রাম বিশুদ্ধ অক্সিজেন নিঃসরণ করে।'
+                          : 'Theoretical basis: 1 kg of live fish absorbs 300–500 mg of oxygen per hour. 1 kg of active Sodium Percarbonate releases ~153g of pure dissolved O2.'}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Outputs Block */}
+                  <div className="bg-gradient-to-b from-[#f0f9ff] to-white p-6 sm:p-8 rounded-[24px] border border-blue-100 flex flex-col justify-between space-y-6 text-left shadow-sm">
+                    <div className="space-y-6">
+                      <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-b border-blue-100 pb-2 flex items-center gap-2">
+                        <Droplets size={16} className="text-blue-500" />
+                        {lang === 'bn' ? 'অক্সিজেন চাহিদা বিশ্লেষণ' : 'Oxygen Demand Insights'}
+                      </h3>
+
+                      <div className="grid grid-cols-2 gap-4">
+                        {/* Hourly demand output */}
+                        <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-1">
+                          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                            {lang === 'bn' ? 'ঘণ্টাপ্রতি অক্সিজেন চাহিদা' : 'Hourly O2 Consumption'}
+                          </span>
+                          <span className="text-lg sm:text-xl font-black text-slate-800 block">
+                            {(fishBiomass * 300 / 1000).toFixed(1)} - {(fishBiomass * 500 / 1000).toFixed(1)}
+                          </span>
+                          <span className="text-[10px] text-slate-500 block font-semibold">
+                            {lang === 'bn' ? 'গ্রাম / ঘণ্টা (g/hr)' : 'Grams / Hour (g/hr)'}
+                          </span>
+                        </div>
+
+                        {/* Daily demand output */}
+                        <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-1">
+                          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                            {lang === 'bn' ? 'দৈনিক (২৪ঘণ্টা) O2 চাহিদা' : 'Daily O2 Consumption'}
+                          </span>
+                          <span className="text-lg sm:text-xl font-black text-slate-800 block">
+                            {(fishBiomass * 7 / 1000).toFixed(1)} - {(fishBiomass * 12 / 1000).toFixed(1)}
+                          </span>
+                          <span className="text-[10px] text-slate-500 block font-semibold">
+                            {lang === 'bn' ? 'কেজি / দিন (kg/day)' : 'KG / Day (kg/day)'}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Chemical dosage conversion results */}
+                      <div className="p-4 rounded-xl bg-blue-50/40 border border-blue-100/50 space-y-3">
+                        <span className="text-[11px] font-extrabold text-blue-700 uppercase tracking-wider block border-b border-blue-100/60 pb-1">
+                          {lang === 'bn' ? 'সোডিয়াম পার-কার্বনেট (Oxyadd) হিসাব:' : 'Oxyadd (Sodium Percarbonate) Equivalents:'}
+                        </span>
+                        
+                        <div className="space-y-2">
+                          <div className="flex justify-between items-center text-xs text-slate-700">
+                            <span>
+                              {lang === 'bn' ? '১ ঘণ্টার মোট O2 চাহিদার সমতুল্য ডোজ:' : 'To supply 1 hour of fish breathing:'}
+                            </span>
+                            <span className="font-extrabold text-slate-900">
+                              {Math.round(((fishBiomass * 300 / 1000) / 153) * 1000)} - {Math.round(((fishBiomass * 500 / 1000) / 153) * 1000)} {lang === 'bn' ? 'গ্রাম' : 'grams'}
+                            </span>
+                          </div>
+                          <div className="flex justify-between items-center text-xs text-slate-700">
+                            <span>
+                              {lang === 'bn' ? 'আপনার পুকুরের সাধারণ প্রতিরোধক ডোজ:' : 'Standard Preventive Dosage:'}
+                            </span>
+                            <span className="font-extrabold text-slate-900">
+                              {Math.round((pondUnit === 'acre' ? pondSize : pondSize / 100) * 250)} - {Math.round((pondUnit === 'acre' ? pondSize : pondSize / 100) * 500)} {lang === 'bn' ? 'গ্রাম' : 'grams'}
+                            </span>
+                          </div>
+                          <div className="flex justify-between items-center text-xs text-slate-700 border-t border-slate-200/50 pt-2">
+                            <span className="font-bold text-blue-800">
+                              {lang === 'bn' ? 'জরুরি ভাসমান অবস্থায় প্রয়োগ ডোজ:' : 'Pond Emergency Gulping Dosage:'}
+                            </span>
+                            <span className="font-extrabold text-[#e11922] bg-red-50 px-2 py-0.5 rounded-md border border-red-100">
+                              {Math.round((pondUnit === 'acre' ? pondSize : pondSize / 100) * 500)} - {Math.round((pondUnit === 'acre' ? pondSize : pondSize / 100) * 700)} {lang === 'bn' ? 'গ্রাম' : 'grams'}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Order via whatsapp short link */}
+                    <button
+                      onClick={() => handleProductWhatsApp(product)}
+                      className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-black transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs leading-none"
+                    >
+                      <MessageCircle size={15} />
+                      <span>{lang === 'bn' ? 'অক্সিএড অক্সিজেন অর্ডার করুন' : 'Order Oxyadd Now'}</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Frequently Asked Questions (FAQ) Section - High-Contrast Styling */}
           <section className="mt-20 border-t border-slate-200 pt-16 font-sans">

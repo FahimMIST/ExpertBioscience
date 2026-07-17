@@ -93,12 +93,13 @@ export default function Footer({ lang }: FooterProps) {
               <li className="flex flex-col space-y-1">
                 <div className="flex items-center gap-2.5 text-slate-800 font-bold">
                   <Phone size={14} className="text-brand-red shrink-0" />
-                  <span>{lang === 'bn' ? 'জরুরি পরামর্শ প্রাপ্তির নম্বরসমূহ:' : 'Emergency Hotlines:'}</span>
+                  <span>{lang === 'bn' ? 'জরুরি পরামর্শ ও যোগাযোগ:' : 'Consultation & Contact:'}</span>
                 </div>
                 <div className="pl-6 flex flex-col space-y-1 text-xs">
-                  <a href="tel:01718583226" className="hover:text-brand-red text-slate-600 transition-colors font-medium">01718-583226</a>
-                  <a href="tel:01677425150" className="hover:text-brand-red text-slate-600 transition-colors font-medium">01677-425150</a>
-                  <a href="tel:01912870915" className="hover:text-brand-red text-slate-600 transition-colors font-medium">01912-870915</a>
+                  <a href="tel:01718583226" className="hover:text-brand-red text-slate-600 transition-colors font-medium">01718-583226 (Sales)</a>
+                  <a href="tel:01677425150" className="hover:text-brand-red text-slate-600 transition-colors font-medium">01677-425150 (Doctor)</a>
+                  <a href="https://wa.me/8801911865076" target="_blank" rel="noopener noreferrer" className="hover:text-[#25D366] text-brand-red font-bold transition-colors">01911-865076 (WhatsApp)</a>
+                  <a href="tel:01912870915" className="hover:text-brand-red text-slate-600 transition-colors font-medium">01912-870915 (Helpdesk)</a>
                 </div>
               </li>
             </ul>

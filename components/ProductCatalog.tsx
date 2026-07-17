@@ -63,7 +63,7 @@ export default function ProductCatalog({ lang }: ProductCatalogProps) {
       ? `হ্যালো এক্সপার্ট বায়োসাইন্স,\nআমি আপনাদের পণ্য "${pDetails.title}" কিনতে চাই এবং পরামর্শের জন্য যুক্ত হতে চাই।`
       : `Hello Expert BioScience,\nI would like to order or consult about your product: "${pDetails.title}".`;
     
-    const whatsappUrl = `https://wa.me/8801718583226?text=${encodeURIComponent(preMessage)}`;
+    const whatsappUrl = `https://wa.me/8801911865076?text=${encodeURIComponent(preMessage)}`;
     window.open(whatsappUrl, '_blank');
   };
 

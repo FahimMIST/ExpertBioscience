@@ -1,125 +1,19 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Calendar, ChevronDown, ChevronUp, Clock, BookOpen, GraduationCap } from 'lucide-react';
+import { Calendar, ChevronDown, ChevronUp, Clock, BookOpen, GraduationCap, Stethoscope } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import Link from 'next/link';
+import { BLOG_POSTS, BlogPost } from '@/lib/blogData';
 
 interface BlogProps {
   lang: 'bn' | 'en';
 }
 
-interface BlogPost {
-  id: string;
-  bn: {
-    title: string;
-    category: string;
-    readTime: string;
-    summary: string;
-    content: string[];
-  };
-  en: {
-    title: string;
-    category: string;
-    readTime: string;
-    summary: string;
-    content: string[];
-  };
-  colorTheme: string;
-  publishDate: string;
-}
-
 export default function Blog({ lang }: BlogProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  const posts: BlogPost[] = [
-    {
-      id: 'oxygen-depletion',
-      colorTheme: 'from-[#ffebee]/10 to-white border-slate-200/80',
-      publishDate: 'June 18, 2026',
-      bn: {
-        title: 'মেঘলা আবহাওয়ায় হঠাৎ পুকুরে অক্সিজেন সংকট ও প্রতিকার',
-        category: 'অক্সিজেন ও ওয়াটার কেয়ার',
-        readTime: '৩ মিনিট রিড',
-        summary: 'আষাঢ় ও শ্রাবণ মাসে আকাশ টানা মেঘাচ্ছন্ন থাকলে সালোকসংশ্লেষণ বন্ধ হয়ে পুকুরে তীব্র অক্সিজেনের ঘাটতি তৈরি হয়। এ সময় মাছ ভেসে ওঠে ও মারা যেতে পারে।',
-        content: [
-          'ভূমিকা: বর্ষাকালে মেঘলা বা গুমোট আবহাওয়ায় সূর্যের আলো না থাকায় পুকুরে প্রাকৃতিক ফাইটোপ্ল্যাঙ্কটন সালোকসংশ্লেষণ করতে পারে না। ফলে পানিতে অক্সিজেন তৈরি বিঘ্নিত হয় এবং তলদেশে হাইড্রোজেন সালফাইডের মাত্রা বৃদ্ধি পায়।',
-          'লক্ষণ: মাছ বা চিংড়ি সকালের দিকে পুকুরের উপরিভাগে এসে মুখ হাঁ করে খাবি খেতে থাকে, সাঁতার কাটার গতি কমে যায় এবং মাছ নিস্তেজ হয়ে পড়ে।',
-          'করণীয়: পুকুরে তাৎক্ষণিক অক্সিজেন সরবরাহের জন্য প্রতি একরে ২৫০ গ্রাম থেকে ৫০০ গ্রাম অক্সিজেন দানাদার বা ট্যাবলেট (যেমন: অক্সিএড) সমস্ত পুকুরে ছড়িয়ে দিতে হবে। এটি পানিতে তাৎক্ষণিক দ্রবীভূত অক্সিজেন (D.O.) বৃদ্ধি করে মাছকে মৃত্যুর হাত থেকে বাঁচায়।',
-          'প্রতিরোধমূলক পরামর্শ: অতিরিক্ত খাবার প্রয়োগ বন্ধ রাখুন, মেঘলা দিনে হররা বা পুকুরের জাল টানা থেকে বিরত থাকুন এবং পানিতে বায়োপ্রোব মেক্স নিয়মিত প্রয়োগ করুন।'
-        ]
-      },
-      en: {
-        title: 'Sudden Oxygen Depletion During Rainy & Cloudy Weather',
-        category: 'Oxygen Control',
-        readTime: '3 min read',
-        summary: 'Continuous cloudy overcasts block natural photosynthesis, triggering severe dissolved oxygen (D.O.) drops in aquaculture ponds in Bangladesh.',
-        content: [
-          'Introduction: During heavy monsoon clouds, lack of sunlight stalls microalgae photosynthesis. This drives dissolved oxygen concentrations down and leads to fatal gas buildup.',
-          'Symptoms: Fish or shrimp float lifelessly near the water surface early in the morning, gulping for air with rapid operculer movements.',
-          'Immediate Remedies: Broadcast active oxygen producing supplements (such as Oxyadd) at a rate of 250g to 500g per acre. It instantly releases active elemental oxygen into the column to end gasping.',
-          'Long-term Care: Suspend raw feed inputs on overcast days, avoid dragging bottom nets, and maintain regular soil probiotics dosages to decay sludge.'
-        ]
-      }
-    },
-    {
-      id: 'ammonia-gas',
-      colorTheme: 'from-slate-50 to-white border-slate-200/80',
-      publishDate: 'June 12, 2026',
-      bn: {
-        title: 'পুকুরের তলদেশে ক্ষতিকর অ্যামোনিয়া গ্যাস নিয়ন্ত্রণের উৎকৃষ্ট উপায়',
-        category: 'গ্যাস ও পরিবেশ শোধন',
-        readTime: '৪ মিনিট রিড',
-        summary: 'অতিরিক্ত খাবার, মাছের মলমূত্র এবং পচা কাঁদা জমে পুকুরের তলদেশে বিষাক্ত অ্যামোনিয়া গ্যাস তৈরি হয়। এটি মাছের ফুলকা নষ্ট করে ও বৃদ্ধিতে বাধা দেয়।',
-        content: [
-          'সমস্যা: পুকুরের মাটি পরীক্ষা না করে ক্রমাগত নিবিড় চাষ করার কারণে কাদা কালো হয়ে বিষাক্ত অ্যামোনিয়া, মিথেন ও সালফাইড গ্যাসের সৃষ্টি হয়। ফলে মাটির উর্বরতা নষ্ট হয়ে ক্ষতিকর ব্যাকটেরিয়া বংশ বিস্তার করে।',
-          'ক্ষয়ক্ষতি: গ্যাস বৃদ্ধির ফলে মাছের ফুলকা কালো হয়ে পচে যায়, খাবারের রুচি হারিয়ে ফেলে এবং সেকেন্ডারি ব্যাকটেরিয়াল ও ফাঙ্গাল সোর সংক্রমিত হয়।',
-          'স্থায়ী সমাধান: ইউকা বায়োসল লিকুইড বা গ্যাসোনাল পাউডার পানিতে ছিটিয়ে দেওয়ার মাধ্যমে কাদা ও পানির ক্ষতিকারক গ্যাস দ্রুত মুক্ত করা যায়। এর মধ্যে থাকা প্রাকৃতিক নির্যাস গ্যাস বুদবুদ দূর করে দেয়।',
-          'জৈবিক প্রতিরোধ: রোগ প্রতিরোধে ১৫ দিনে একবার ব্যাক্টিরিয়া সমৃদ্ধ "বায়োপ্রোব ম্যাক্স" প্রোবায়োটিক ব্যবহার করুন যা পুঞ্জীভূত জৈব বর্জ্য হজম করে কাদার শোধন ঘটায়।'
-        ]
-      },
-      en: {
-        title: 'Mitigating Toxic Gaseous Ammonia Buildups at the Pond Floor',
-        category: 'Waste Bioremediation',
-        readTime: '4 min read',
-        summary: 'Excess toxic ammonia (NH3) resulting from surplus feed and decaying organic waste severely irritates gills and blocks standard growth curves.',
-        content: [
-          'The Hazard: High density stocking and nitrogen residues slowly form toxic black mud. It breeds volatile chemical compounds that compromise fish health.',
-          'Biological Damage: It causes black gill rot, complete loss of feed attraction, and leaves fish vulnerable to opportunistic Aeromonas strains.',
-          'Scientific Treatment: Spray premium Yucca Biosol liquid or Gasonull powder to neutralize toxic NH3 molecules instantly and restore oxygen circulation.',
-          'The Preventive Loop: Use deep soil probiotics like Bioprob Max every fortnight to biochemically degrade bottom sludge before it rots.'
-        ]
-      }
-    },
-    {
-      id: 'lice-argulus',
-      colorTheme: 'from-[#ffebee]/10 to-white border-slate-200/80',
-      publishDate: 'June 05, 2026',
-      bn: {
-        title: 'মাছের ক্ষতিকর উকুন ও সুতা পরজীবী চিরতরে দূর করার উপায়',
-        category: 'পরজীবী ও রোগ দমন',
-        readTime: '৩ মিনিট রিড',
-        summary: 'মিষ্টি পানির মাছের গায়ে উকুন (Argulus) ও নোঙর পরজীবী মাছের রক্ত চুষে ক্ষত তৈরি করে। এর ফলে মাছের গতি কমে যায় এবং আঁশ খসে পড়ে অকাল মৃত্যু ঘটে।',
-        content: [
-          'লক্ষণ: পরজীবী আক্রান্ত মাছ নিজের গা পুকুরের পাড় বা কোনো খুঁটির সাথে ঘষতে থাকে, ছটফট করে লাফায়, শরীর রুগ্ন দেখায় এবং চামড়ায় লালচে ক্ষত স্পট পরিলক্ষিত হয়।',
-          'আক্রান্ত প্রজাতি: রুই, কাতলা ও মৃগেল জাতীয় মাছে এই পরজীবীর আক্রমণ বেশি দেখা যায়। আক্রান্ত অবস্থায় মাছ খাদ্য গ্রহণ সম্পূর্ণ বন্ধ করে দেয়।',
-          'প্রতিকার: প্রতি একরে ১০০ মিলি প্যারাটিন লিকুইড (আইভারমেকটিন ৩%) পানিতে গুলে সমানভাবে ছিটিয়ে দিন। এটি এককের ওপরের ও ভেতরের সুরক্ষায় পরজীবীকে চিরতরে দমন করে।',
-          'জীবাণুমুক্তকরণ: পরজীবী দমন হওয়ার ৩ দিন পর পুকুরকে শতভাগ জীবাণুমুক্ত করতে প্রতি একরে ২৫০ মিলি জার্মবিট শক্তিশালী স্যানিটাইজার ব্যবহার করা উচিত।'
-        ]
-      },
-      en: {
-        title: 'Complete Eradication of Pond Lice (Argulus) & Anchor Worm Pests',
-        category: 'Parasitology Care',
-        readTime: '3 min read',
-        summary: 'Argulus lice and anchor worms pierce scales to suck host blood, triggering extreme tissue lesions, poor feed conversion, and heavy mortality.',
-        content: [
-          'Infection Signs: Infected species repeatedly rub their bodies against bamboo frames, exhibit elevated swimming leaps, and have bleeding lesions on skin.',
-          'Susceptible Carp: Big carps (Catla, Rui) are highly prone to massive outbreaks. In severe stages, secondary Saprolegnia fungus attacks the lesions.',
-          'Effective Therapy: Broadcast Paratin Liquid (Ivermectin 3% active solution) at 100ml per acre (3-5ft depth) to quickly eliminate skin pests.',
-          'Sterility Step: Always apply British formulation sanitizer Germbit after parasite removal to disinfect open fish wounds and prevent bacterial rot.'
-        ]
-      }
-    }
-  ];
+  const posts: BlogPost[] = BLOG_POSTS;
 
   const toggleExpand = (id: string) => {
     if (expandedId === id) {
@@ -219,6 +113,29 @@ export default function Blog({ lang }: BlogProps) {
                             </p>
                           );
                         })}
+                        {(post.id === 'carp-magur-stocking' || post.id === 'gulsha-farming-guide' || post.id === 'gulsha-fingerling-pond-prep') && (
+                          <div className="mt-6 p-4 rounded-xl bg-rose-50 border border-brand-red/15 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div className="flex items-start gap-3 text-left">
+                              <Stethoscope className="text-brand-red shrink-0 mt-0.5" size={20} />
+                              <div>
+                                <h4 className="text-sm font-black text-slate-950">
+                                  {lang === 'bn' ? 'পুকুরের স্বাস্থ্য ও মাছের রোগ নিয়ে চিন্তিত?' : 'Concerned About Pond Health or Fish Diseases?'}
+                                </h4>
+                                <p className="text-xs text-slate-600 mt-1 leading-normal">
+                                  {lang === 'bn' 
+                                    ? 'আমাদের এআই-চালিত "একুয়া ডক্টর" ডায়াগনস্টিক টুল ব্যবহার করে পুকুরের পানি ও রোগের তাৎক্ষণিক সমাধান পান।' 
+                                    : 'Use our AI-powered "AquaDoctor" diagnostic tool to analyze water quality and get instant solutions.'}
+                                </p>
+                              </div>
+                            </div>
+                            <Link 
+                              href="/aquadoctor"
+                              className="w-full sm:w-auto px-4 py-2 bg-brand-red text-white text-xs font-black rounded-lg hover:bg-[#b01018] text-center transition-all shrink-0 cursor-pointer shadow-xs"
+                            >
+                              {lang === 'bn' ? 'একুয়া ডক্টর টুল দেখুন' : 'Consult AquaDoctor'}
+                            </Link>
+                          </div>
+                        )}
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -226,12 +143,20 @@ export default function Blog({ lang }: BlogProps) {
                 </div>
 
                 {/* Read More button */}
-                <div className="pt-6 mt-6 border-t border-slate-200/60 flex items-center justify-between">
-                  <span className="text-xs text-slate-400 font-semibold font-sans">Expert BioScience Limited</span>
+                <div className="pt-6 mt-6 border-t border-slate-200/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="flex flex-col gap-1 text-left">
+                    <span className="text-xs text-slate-400 font-semibold font-sans">Expert BioScience Limited</span>
+                    <Link
+                      href={`/blog/${post.id}`}
+                      className="text-[11px] text-[#e11922]/80 hover:text-[#e11922] font-bold hover:underline flex items-center gap-0.5 transition-all"
+                    >
+                      {lang === 'bn' ? 'আলাদা পেজে পড়ুন ↗' : 'Read in Dedicated Page ↗'}
+                    </Link>
+                  </div>
                   
                   <button
                     onClick={() => toggleExpand(post.id)}
-                    className="px-4 py-2 rounded-xl bg-brand-red/10 border border-brand-red/20 text-brand-red hover:bg-[#e11922] hover:text-white text-xs font-bold flex items-center gap-1 transition-all cursor-pointer font-sans"
+                    className="px-4 py-2 rounded-xl bg-brand-red/10 border border-brand-red/20 text-brand-red hover:bg-[#e11922] hover:text-white text-xs font-bold flex items-center gap-1 transition-all cursor-pointer font-sans whitespace-nowrap self-end sm:self-auto"
                   >
                     <span>{isExpanded ? (lang === 'bn' ? 'সংক্ষেপ করুন' : 'Collapse Post') : (lang === 'bn' ? 'বিস্তারিত পড়ুন' : 'Read Full Post')}</span>
                     {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
