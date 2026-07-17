@@ -307,7 +307,7 @@ export const BLOG_POSTS: BlogPost[] = [
     }
   },
   {
-    id: 'ideal-fish-stocking-density',
+    id: 'ideal-fish-stocking-density-guide',
     colorTheme: 'from-[#ebf8ff]/20 to-white border-blue-150',
     publishDate: 'July 16, 2026',
     bn: {

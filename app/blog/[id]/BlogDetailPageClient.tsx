@@ -202,7 +202,7 @@ export default function BlogDetailPageClient({ post }: Props) {
             </div>
 
             {/* Footer and diagnostic CTA */}
-            {(post.id === 'carp-magur-stocking' || post.id === 'gulsha-farming-guide' || post.id === 'gulsha-fingerling-pond-prep' || post.id === 'tilapia-history-intro' || post.id === 'tilapia-nursing-management' || post.id === 'ideal-fish-stocking-density') && (
+            {(post.id === 'carp-magur-stocking' || post.id === 'gulsha-farming-guide' || post.id === 'gulsha-fingerling-pond-prep' || post.id === 'tilapia-history-intro' || post.id === 'tilapia-nursing-management' || post.id === 'ideal-fish-stocking-density' || post.id === 'ideal-fish-stocking-density-guide') && (
               <div className="mt-12 p-6 rounded-2xl bg-rose-50 border border-brand-red/15 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xs">
                 <div className="flex items-start gap-4 text-left">
                   <div className="p-3 bg-brand-red/10 rounded-xl text-brand-red">

@@ -31,6 +31,8 @@ export default function AquaDoctor({ lang }: AquaDoctorProps) {
   const [tilapiaSubTab, setTilapiaSubTab] = useState<'nursery' | 'feed'>('nursery');
   const [tilapiaStage, setTilapiaStage] = useState<'early' | 'mid' | 'finish'>('early');
 
+
+
   const options = {
     cultureType: [
       { id: 'pond', bn: 'ঐতিহ্যবাহী পুকুর', en: 'Traditional Pond' },
@@ -388,6 +390,8 @@ ${formData.description || 'কোনো অতিরিক্ত বিবরণ
           </div>
 
         </div>
+
+
 
         {/* Interactive Stocking Density Calculator Section */}
         <div className="mt-24 border-t border-slate-200 pt-16 font-sans text-left">

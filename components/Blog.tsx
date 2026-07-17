@@ -154,7 +154,7 @@ export default function Blog({ lang }: BlogProps) {
                             </p>
                           );
                         })}
-                        {(post.id === 'carp-magur-stocking' || post.id === 'gulsha-farming-guide' || post.id === 'gulsha-fingerling-pond-prep' || post.id === 'ideal-fish-stocking-density') && (
+                        {(post.id === 'carp-magur-stocking' || post.id === 'gulsha-farming-guide' || post.id === 'gulsha-fingerling-pond-prep' || post.id === 'ideal-fish-stocking-density' || post.id === 'ideal-fish-stocking-density-guide') && (
                           <div className="mt-6 p-4 rounded-xl bg-rose-50 border border-brand-red/15 flex flex-col sm:flex-row items-center justify-between gap-4">
                             <div className="flex items-start gap-3 text-left">
                               <Stethoscope className="text-brand-red shrink-0 mt-0.5" size={20} />
