@@ -187,18 +187,9 @@ export default function ProductCatalog({ lang }: ProductCatalogProps) {
                     </Link>
 
                     {/* Short Description */}
-                    <p className="text-sm text-slate-600 line-clamp-2 leading-relaxed">
+                    <p className="text-sm text-slate-600 line-clamp-4 leading-relaxed">
                       {details.description}
                     </p>
-
-                    {/* Composition label */}
-                    <div className="text-xs bg-slate-50 p-2.5 rounded-xl border border-slate-200 flex items-start gap-1">
-                      <ShieldCheck size={14} className="text-brand-red mt-0.5 shrink-0" />
-                      <span className="text-slate-700 text-xs text-left leading-tight">
-                        <strong className="text-brand-red">{lang === 'bn' ? 'উপাদান: ' : 'Active: '}</strong> 
-                        {details.composition}
-                      </span>
-                    </div>
                   </div>
 
                   {/* Actions buttons */}

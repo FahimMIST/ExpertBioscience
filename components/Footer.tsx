@@ -23,13 +23,13 @@ export default function Footer({ lang }: FooterProps) {
           <div className="md:col-span-5 flex flex-col space-y-4">
             <Link href="/" className="flex items-center gap-3">
               {/* Logo Replica */}
-              <div className="flex items-center justify-center w-14 h-14 bg-transparent overflow-hidden shrink-0">
+              <div className="flex items-center justify-center w-16 h-16 bg-transparent overflow-hidden shrink-0">
                 <Image
                   src="/expertbioscience_logo.png"
                   alt="Expert BioScience Logo"
-                  width={56}
-                  height={56}
-                  className="w-full h-full object-contain"
+                  width={64}
+                  height={64}
+                  className="w-full h-full object-contain mix-blend-multiply"
                   referrerPolicy="no-referrer"
                 />
               </div>
