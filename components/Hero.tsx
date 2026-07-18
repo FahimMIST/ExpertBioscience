@@ -23,7 +23,7 @@ export default function Hero({ lang }: HeroProps) {
 
   const text = {
     badge: {
-      bn: 'এভরি ডে, এক্সপার্টের সাথে থাকুন, খামার নিরাপদ রাখুন!!',
+      bn: 'এভরি ডে, এক্সপার্টের সঙ্গে থাকুন—খামার নিরাপদ রাখুন!',
       en: 'Stay with Expert, Keep Your Farm Safe Every Single Day!!',
     },
     headingPre: {
@@ -35,7 +35,7 @@ export default function Hero({ lang }: HeroProps) {
       en: 'Aquaculture Solutions',
     },
     desc: {
-      bn: 'এক্সপার্ট বায়োসাইন্স লিমিটেড মৎস্য চাষিদের পাশে দাঁড়িয়ে তৈরি করে আন্তর্জাতিক প্রযুক্তিতে প্রস্তুতকৃত অত্যন্ত কার্যকর মাছের সুরক্ষাকারী প্রোবায়োটিক্স, ক্ষতিকর গ্যাস নিয়ন্ত্রক, অক্সিজেন দানাদার ও লাইভ টনিক যা মাছের অকাল মৃত্যু রোধ করে খামারের নিশ্চিত লাভ বয়ে আনে।',
+      bn: 'এক্সপার্ট বায়োসায়েন্স লিমিটেড মৎস্যচাষিদের পাশে থেকে আন্তর্জাতিক প্রযুক্তিতে প্রস্তুতকৃত অত্যন্ত কার্যকর মাছের সুরক্ষাকারী প্রোবায়োটিক, ক্ষতিকর গ্যাস নিয়ন্ত্রক, অক্সিজেন দানাদার এবং লিভার টনিক উৎপাদন ও সরবরাহ করে। এসব পণ্য মাছের অকাল মৃত্যু রোধ, পানির গুণগত মান উন্নয়ন এবং মাছের সুস্থ বৃদ্ধি নিশ্চিত করে, ফলে খামারিদের নিশ্চিত লাভ অর্জনে সহায়তা করে।',
       en: 'Expert BioScience Limited manufactures premium bio-certified fish medicines, soil/water probiotics, toxic gas reducers, and fast-acting oxygen tablets to secure high-density fish farms and maximize yield metrics in Bangladesh.',
     },
     ctaMain: {
