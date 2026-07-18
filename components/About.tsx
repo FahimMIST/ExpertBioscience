@@ -94,8 +94,8 @@ export default function About({ lang }: AboutProps) {
                   <span className="text-[10px] text-slate-500 mt-0.5 block font-semibold">{lang === 'bn' ? 'অর্গানিক উপাদান' : 'Bio Organic Ingredients'}</span>
                 </div>
                 <div className="p-3 rounded-2xl bg-white border border-slate-200 text-center">
-                  <span className="block text-xl font-bold text-brand-red">পাবলিক</span>
-                  <span className="text-[10px] text-slate-500 mt-0.5 block font-semibold">{lang === 'bn' ? 'ফ্রি সহায়তা' : 'Free Veterinary Triage'}</span>
+                  <span className="block text-xl font-bold text-brand-red">{lang === 'bn' ? 'তথ্য ও' : 'Info &'}</span>
+                  <span className="text-[10px] text-slate-500 mt-0.5 block font-semibold">{lang === 'bn' ? 'সহায়তা' : 'Help & Support'}</span>
                 </div>
               </div>
             </div>
@@ -125,11 +125,41 @@ export default function About({ lang }: AboutProps) {
                   </>
                 )}
               </h2>
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed mt-4 text-center lg:text-left">
-                {lang === 'bn'
-                  ? 'উন্নত মানের মাছের ওষুধ মানেই খামারের নিশ্চয়তা। আমরা অ্যারোমোনাস ব্যাকটেরিয়া রোগ প্রতিরোধ, কাদা পচন শোধন ও ফুলকা পচা নিরাময়ে কাজ করে যাচ্ছি। আমাদের আধুনিক ল্যাবরেটরি স্পেসিফিকেশন চাষিকে নিশ্চিত ফল দেয়।'
-                  : 'We have redesigned classic treatment routines to protect valuable high-yield fish variants. From control panels to active pond floor restoration, our scientific approaches save hundreds of metric tons of harvests annually.'}
-              </p>
+              <div className="text-slate-600 text-sm sm:text-base leading-relaxed mt-5 space-y-4 text-left">
+                {lang === 'bn' ? (
+                  <>
+                    <p className="font-medium text-slate-800">
+                      বাংলাদেশের মৎস্য খাতের টেকসই উন্নয়ন, নিরাপদ উৎপাদন এবং খামারিদের লাভজনকতা নিশ্চিত করার লক্ষ্য নিয়ে <span className="text-brand-red font-bold">এক্সপার্ট বায়োসাইন্স লিমিটেড</span> আন্তর্জাতিক মানের প্রযুক্তিনির্ভর জলজ প্রাণিসম্পদ ব্যবস্থাপনা পণ্য ও সমাধান নিয়ে কাজ করছে।
+                    </p>
+                    <p>
+                      আধুনিক গবেষণা ও উদ্ভাবনের সমন্বয়ে আমরা সরবরাহ করি উচ্চমানের প্রোবায়োটিকস, ক্ষতিকর গ্যাস নিয়ন্ত্রক লিকুইড / পাউডার, অক্সিজেন ট্যাবলেট/গ্রানুলার, লিভার টনিক, ভিটামিন প্রিমিক্স, গ্রোথ প্রমোটার জেল, পানি ও পরিবেশ উন্নয়নকারী এবং স্বাস্থ্য সুরক্ষামূলক পণ্য, যা পুকুরের পরিবেশের ভারসাম্য বজায় রাখতে, মাছের রোগের ঝুঁকি কমাতে, বৃদ্ধি ত্বরান্বিত করতে এবং অকাল মৃত্যু প্রতিরোধে কার্যকর ভূমিকা রাখে।
+                    </p>
+                    <p>
+                      শুধু মানসম্মত পণ্য সরবরাহই নয়, দক্ষ কারিগরি পরামর্শ ও আধুনিক চাষ ব্যবস্থাপনার মাধ্যমে দেশের মৎস্য খামারিদের সফলতা অর্জনে পাশে থাকাই আমাদের অঙ্গীকার।
+                    </p>
+                    <p className="font-extrabold text-slate-900 border-l-4 border-brand-red pl-3 mt-4">
+                      এক্সপার্ট বায়োসাইন্স লিমিটেড— প্রযুক্তি, গুণগত মান ও আস্থার সমন্বয়ে নিরাপদ ও লাভজনক মৎস্য চাষের বিশ্বস্ত সহযোগী। <br />
+                      <span className="text-brand-red font-black text-xs uppercase tracking-wider block mt-1">Your Farming Partner</span>
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="font-medium text-slate-850">
+                      With the vision of ensuring the sustainable development, safe production, and profitability of farmers in the fisheries sector of Bangladesh, <span className="text-brand-red font-bold">Expert BioScience Limited</span> delivers international-grade, technology-driven aquatic health and livestock management products and solutions.
+                    </p>
+                    <p>
+                      Combining modern research and cutting-edge innovations, we supply premium-quality probiotics, harmful gas controllers (liquid/powder), fast-dissolving oxygen tablets/granules, liver tonics, vitamin premixes, growth promoter gels, water & environmental conditioners, and essential biosecurity products that maintain ecological balance, reduce disease risks, accelerate growth, and prevent premature fish mortality.
+                    </p>
+                    <p>
+                      Our commitment extends beyond providing top-tier products; we stand firmly by the success of our country&apos;s fish farmers through expert technical advice and modern culturing techniques.
+                    </p>
+                    <p className="font-extrabold text-slate-900 border-l-4 border-brand-red pl-3 mt-4">
+                      Expert BioScience Limited—The trusted partner for safe and profitable aquaculture, integrating technology, quality, and trust. <br />
+                      <span className="text-brand-red font-black text-xs uppercase tracking-wider block mt-1">Your Farming Partner</span>
+                    </p>
+                  </>
+                )}
+              </div>
             </div>
 
             {/* List of narrative points */}

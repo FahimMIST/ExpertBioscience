@@ -23,6 +23,128 @@ export default function Home() {
         {/* Immersive Brand Hero Banner */}
         <Hero lang={lang} />
 
+        {/* Brand Corporate Commitment Section */}
+        <section className="py-20 bg-white relative border-b border-slate-100 overflow-hidden">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-brand-red/5 rounded-full filter blur-3xl pointer-events-none select-none"></div>
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand-red/5 rounded-full filter blur-3xl pointer-events-none select-none"></div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-sans text-left">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              
+              {/* Left Column: Visual Solution Matrix */}
+              <div className="lg:col-span-5 space-y-6">
+                <div className="space-y-2">
+                  <span className="text-xs uppercase font-mono tracking-widest text-brand-red font-bold block">
+                    {lang === 'bn' ? 'প্রযুক্তি ও গুণগত মান' : 'Technology & Premium Quality'}
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-black text-slate-900 leading-tight">
+                    {lang === 'bn' ? 'জলজ প্রাণিসম্পদ ব্যবস্থাপনা' : 'Aquaculture Livestock Management'}
+                  </h3>
+                  <p className="text-xs text-slate-500">
+                    {lang === 'bn' 
+                      ? 'আন্তর্জাতিক মানের প্রযুক্তিনির্ভর জলজ সমাধান যা অকাল মৃত্যু প্রতিরোধ ও পুকুরের ভারসাম্য রক্ষা করে।'
+                      : 'International-standard tech-driven aquatic health formulations manufactured for highest efficacy.'}
+                  </p>
+                </div>
+
+                {/* Grid of Specialized Categories */}
+                <div className="grid grid-cols-2 gap-3.5">
+                  {[
+                    { title: lang === 'bn' ? 'প্রোবায়োটিকস' : 'Probiotics', desc: lang === 'bn' ? 'উচ্চমানের উপকারী ব্যাকটেরিয়া' : 'Beneficial soil bacteria' },
+                    { title: lang === 'bn' ? 'গ্যাস নিয়ন্ত্রক' : 'Gas Controllers', desc: lang === 'bn' ? 'ক্ষতিকর গ্যাস দূরীকরণ' : 'Harmful gas management' },
+                    { title: lang === 'bn' ? 'অক্সিজেন ট্যাবলেট' : 'Oxygen Boosters', desc: lang === 'bn' ? 'দ্রুত অক্সিজেন সরবরাহকারী' : 'Instant oxygen solutions' },
+                    { title: lang === 'bn' ? 'লিভার টনিক' : 'Liver Tonics', desc: lang === 'bn' ? 'হজম ও রোগ প্রতিরোধ বৃদ্ধি' : 'Digestion & immunity boost' },
+                    { title: lang === 'bn' ? 'গ্রোথ প্রমোটার জেল' : 'Growth Promoters', desc: lang === 'bn' ? 'সহজ ও ত্বরান্বিত বৃদ্ধি' : 'Faster healthy weights' },
+                    { title: lang === 'bn' ? 'পরিবেশ উন্নয়নকারী' : 'Water Conditioners', desc: lang === 'bn' ? 'পানি ও পরিবেশ ভারসাম্য' : 'Eco-balance stabilizers' }
+                  ].map((item, idx) => (
+                    <div key={idx} className="p-4 bg-slate-50 border border-slate-200/80 rounded-2xl hover:border-brand-red/20 hover:bg-slate-100/50 transition-all">
+                      <h4 className="text-sm font-extrabold text-slate-900">{item.title}</h4>
+                      <p className="text-[10px] text-slate-500 mt-1">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Slogan highlight */}
+                <div className="p-4 rounded-2xl bg-brand-red/5 border border-brand-red/10 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Award size={18} className="text-brand-red" />
+                    <span className="text-xs font-bold text-slate-700">{lang === 'bn' ? 'আপনার বিশ্বস্ত খামার সহযোগী' : 'Your Farming Partner'}</span>
+                  </div>
+                  <span className="text-[10px] font-mono font-bold text-brand-red uppercase tracking-wider">Est. 2021</span>
+                </div>
+              </div>
+
+              {/* Right Column: verbatim user text presentation */}
+              <div className="lg:col-span-7 space-y-6 lg:pl-4">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-600 text-xs font-bold">
+                  <Sparkles size={12} className="text-brand-red" />
+                  <span>{lang === 'bn' ? 'আমাদের লক্ষ্য ও প্রতিশ্রুতি' : 'Our Identity & Commitments'}</span>
+                </div>
+
+                <div className="space-y-4 text-slate-650 text-sm sm:text-base leading-relaxed">
+                  {lang === 'bn' ? (
+                    <>
+                      <p className="text-slate-800 font-extrabold text-base sm:text-lg leading-snug">
+                        বাংলাদেশের মৎস্য খাতের টেকসই উন্নয়ন, নিরাপদ উৎপাদন এবং খামারিদের লাভজনকতা নিশ্চিত করার লক্ষ্য নিয়ে <span className="text-brand-red">এক্সপার্ট বায়োসাইন্স লিমিটেড</span> আন্তর্জাতিক মানের প্রযুক্তিনির্ভর জলজ প্রাণিসম্পদ ব্যবস্থাপনা পণ্য ও সমাধান নিয়ে কাজ করছে।
+                      </p>
+                      <p>
+                        আধুনিক গবেষণা ও উদ্ভাবনের সমন্বয়ে আমরা সরবরাহ করি উচ্চমানের প্রোবায়োটিকস, ক্ষতিকর গ্যাস নিয়ন্ত্রক লিকুইড / পাউডার, অক্সিজেন ট্যাবলেট/গ্রানুলার, লিভার টনিক, ভিটামিন প্রিমিক্স, গ্রোথ প্রমোটার জেল, পানি ও পরিবেশ উন্নয়নকারী এবং স্বাস্থ্য সুরক্ষামূলক পণ্য, যা পুকুরের পরিবেশের ভারসাম্য বজায় রাখতে, মাছের রোগের ঝুঁকি কমাতে, বৃদ্ধি ত্বরান্বিত করতে এবং অকাল মৃত্যু প্রতিরোধে কার্যকর ভূমিকা রাখে।
+                      </p>
+                      <p>
+                        শুধু মানসম্মত পণ্য সরবরাহই নয়, দক্ষ কারিগরি পরামর্শ ও আধুনিক চাষ ব্যবস্থাপনার মাধ্যমে দেশের মৎস্য খামারিদের সফলতা অর্জনে পাশে থাকাই আমাদের অঙ্গীকার।
+                      </p>
+                      <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div>
+                          <p className="text-sm font-black text-slate-900">
+                            এক্সপার্ট বায়োসাইন্স লিমিটেড—প্রযুক্তি, গুণগত মান ও আস্থার সমন্বয়।
+                          </p>
+                          <span className="text-xs font-bold text-brand-red block mt-0.5">Your Farming Partner</span>
+                        </div>
+                        <Link 
+                          href="/about" 
+                          className="inline-flex items-center gap-1 text-xs font-extrabold text-brand-red hover:underline shrink-0"
+                        >
+                          <span>বিস্তারিত কোম্পানি প্রোফাইল</span>
+                          <ArrowRight size={12} />
+                        </Link>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-slate-800 font-extrabold text-base sm:text-lg leading-snug">
+                        With the mission of ensuring the sustainable development, safe production, and profitability of farmers in the fisheries sector of Bangladesh, <span className="text-brand-red">Expert BioScience Limited</span> delivers international-standard, tech-driven aquatic health and livestock management products.
+                      </p>
+                      <p>
+                        Combining modern research and cutting-edge innovations, we supply premium-quality probiotics, harmful gas controllers (liquid/powder), fast-dissolving oxygen tablets/granules, liver tonics, vitamin premixes, growth promoter gels, water & environmental conditioners, and essential biosecurity products that maintain ecological balance, reduce disease risks, accelerate growth, and prevent premature fish mortality.
+                      </p>
+                      <p>
+                        Our commitment extends beyond providing top-tier products; we stand firmly by the success of our country&apos;s fish farmers through expert technical advice and modern culturing techniques.
+                      </p>
+                      <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div>
+                          <p className="text-sm font-black text-slate-900">
+                            Expert BioScience Limited—The trusted partner integrating tech, quality, and trust.
+                          </p>
+                          <span className="text-xs font-bold text-brand-red block mt-0.5">Your Farming Partner</span>
+                        </div>
+                        <Link 
+                          href="/about" 
+                          className="inline-flex items-center gap-1 text-xs font-extrabold text-brand-red hover:underline shrink-0"
+                        >
+                          <span>Detailed Company Profile</span>
+                          <ArrowRight size={12} />
+                        </Link>
+                      </div>
+                    </>
+                  )}
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </section>
+
         {/* Cohesive Bento Page-Routing Dashboard */}
         <section className="py-20 bg-slate-50 relative border-t border-slate-100">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-red/5 rounded-full filter blur-3xl pointer-events-none select-none"></div>

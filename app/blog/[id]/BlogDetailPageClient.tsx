@@ -13,6 +13,21 @@ interface Props {
   post: BlogPost;
 }
 
+const formatBoldText = (text: string) => {
+  if (!text) return '';
+  const parts = text.split(/\*\*([^*]+)\*\*/g);
+  return parts.map((part, i) => {
+    if (i % 2 === 1) {
+      return (
+        <strong key={i} className="text-brand-red font-black">
+          {part}
+        </strong>
+      );
+    }
+    return part;
+  });
+};
+
 export default function BlogDetailPageClient({ post }: Props) {
   const { lang, setLang } = useLanguage();
   const [copied, setCopied] = useState(false);
@@ -174,7 +189,7 @@ export default function BlogDetailPageClient({ post }: Props) {
                             <tr key={rIdx} className={rIdx % 2 === 0 ? 'bg-white' : 'bg-slate-50/40'}>
                               {row.map((cell, cIdx) => (
                                 <td key={cIdx} className="px-5 py-4 text-slate-700 font-semibold whitespace-pre-line border-b border-slate-100">
-                                  {cell}
+                                  {formatBoldText(cell)}
                                 </td>
                               ))}
                             </tr>
@@ -191,10 +206,10 @@ export default function BlogDetailPageClient({ post }: Props) {
                     {parts.length > 1 ? (
                       <>
                         <strong className="text-brand-red text-lg block mb-1 font-extrabold">{parts[0]}</strong>
-                        <span className="text-slate-800">{parts.slice(1).join(': ')}</span>
+                        <span className="text-slate-800">{formatBoldText(parts.slice(1).join(': '))}</span>
                       </>
                     ) : (
-                      <span className="text-slate-800">{paragraph}</span>
+                      <span className="text-slate-800">{formatBoldText(paragraph)}</span>
                     )}
                   </p>
                 );
@@ -202,7 +217,7 @@ export default function BlogDetailPageClient({ post }: Props) {
             </div>
 
             {/* Footer and diagnostic CTA */}
-            {(post.id === 'carp-magur-stocking' || post.id === 'gulsha-farming-guide' || post.id === 'gulsha-fingerling-pond-prep' || post.id === 'tilapia-history-intro' || post.id === 'tilapia-nursing-management' || post.id === 'ideal-fish-stocking-density' || post.id === 'ideal-fish-stocking-density-guide') && (
+            {(post.id === 'carp-magur-stocking' || post.id === 'gulsha-farming-guide' || post.id === 'gulsha-fingerling-pond-prep' || post.id === 'tilapia-history-intro' || post.id === 'tilapia-nursing-management' || post.id === 'ideal-fish-stocking-density' || post.id === 'ideal-fish-stocking-density-guide' || post.id === 'shing-fish-farming-guide' || post.id === 'shing-pond-prep-and-nursery-management') && (
               <div className="mt-12 p-6 rounded-2xl bg-rose-50 border border-brand-red/15 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xs">
                 <div className="flex items-start gap-4 text-left">
                   <div className="p-3 bg-brand-red/10 rounded-xl text-brand-red">

@@ -10,10 +10,25 @@ interface BlogProps {
   lang: 'bn' | 'en';
 }
 
+const formatBoldText = (text: string) => {
+  if (!text) return '';
+  const parts = text.split(/\*\*([^*]+)\*\*/g);
+  return parts.map((part, i) => {
+    if (i % 2 === 1) {
+      return (
+        <strong key={i} className="text-brand-red font-black">
+          {part}
+        </strong>
+      );
+    }
+    return part;
+  });
+};
+
 export default function Blog({ lang }: BlogProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  const posts: BlogPost[] = BLOG_POSTS;
+  const posts: BlogPost[] = [...BLOG_POSTS].reverse();
 
   const toggleExpand = (id: string) => {
     if (expandedId === id) {
@@ -129,7 +144,7 @@ export default function Blog({ lang }: BlogProps) {
                                       <tr key={rIdx} className={rIdx % 2 === 0 ? 'bg-white' : 'bg-slate-50/40'}>
                                         {row.map((cell, cIdx) => (
                                           <td key={cIdx} className="px-3 py-2.5 text-slate-600 font-medium whitespace-pre-line border-b border-slate-100">
-                                            {cell}
+                                            {formatBoldText(cell)}
                                           </td>
                                         ))}
                                       </tr>
@@ -146,15 +161,15 @@ export default function Blog({ lang }: BlogProps) {
                               {parts.length > 1 ? (
                                 <>
                                   <strong className="text-brand-red block mb-1 font-bold">{parts[0]}</strong>
-                                  <span>{parts.slice(1).join(': ')}</span>
+                                  <span>{formatBoldText(parts.slice(1).join(': '))}</span>
                                 </>
                               ) : (
-                                paragraph
+                                formatBoldText(paragraph)
                               )}
                             </p>
                           );
                         })}
-                        {(post.id === 'carp-magur-stocking' || post.id === 'gulsha-farming-guide' || post.id === 'gulsha-fingerling-pond-prep' || post.id === 'ideal-fish-stocking-density' || post.id === 'ideal-fish-stocking-density-guide') && (
+                        {(post.id === 'carp-magur-stocking' || post.id === 'gulsha-farming-guide' || post.id === 'gulsha-fingerling-pond-prep' || post.id === 'ideal-fish-stocking-density' || post.id === 'ideal-fish-stocking-density-guide' || post.id === 'shing-fish-farming-guide' || post.id === 'shing-pond-prep-and-nursery-management') && (
                           <div className="mt-6 p-4 rounded-xl bg-rose-50 border border-brand-red/15 flex flex-col sm:flex-row items-center justify-between gap-4">
                             <div className="flex items-start gap-3 text-left">
                               <Stethoscope className="text-brand-red shrink-0 mt-0.5" size={20} />
