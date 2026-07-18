@@ -54,48 +54,70 @@ export default function About({ lang }: AboutProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Main graphics mockup card showing brand values */}
-          <div className="lg:col-span-5 relative">
-            <div className="absolute inset-0 bg-brand-red/5 rounded-3xl filter blur-xl transform rotate-2"></div>
+          <div className="lg:col-span-5 relative flex flex-col justify-between h-full">
+            {/* Soft decorative ambient gradient behind */}
+            <div className="absolute -inset-4 bg-gradient-to-tr from-brand-red/5 to-transparent rounded-3xl filter blur-2xl opacity-70 pointer-events-none"></div>
             
-            <div className="relative bento-cell p-8 space-y-6">
-              <div className="flex items-center gap-3">
-                {/* stylized EBL Crest */}
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-red to-red-650 flex items-center justify-center font-black text-white text-lg tracking-wider">
+            <div className="relative space-y-8 text-left">
+              {/* Profile header with subtle layout */}
+              <div className="flex items-center gap-4">
+                {/* stylized EBL Crest - integrated and clean */}
+                <div className="w-14 h-14 rounded-2xl bg-brand-red flex items-center justify-center font-black text-white text-xl tracking-wider shadow-sm shadow-brand-red/10 shrink-0">
                   EBL
                 </div>
-                <div className="text-left font-sans">
-                  <h4 className="text-base font-extrabold text-slate-900 leading-tight">
+                <div>
+                  <h4 className="text-lg font-bold text-slate-900 leading-tight">
                     {lang === 'bn' ? 'এক্সপার্ট বায়োসাইন্স লিমিটেড' : 'Expert BioScience Ltd.'}
                   </h4>
-                  <span className="text-[10px] uppercase tracking-widest text-[#e11922] font-bold">
+                  <span className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold mt-1 block">
                     {lang === 'bn' ? 'স্থাপিত: ২০২১ | রেজি: নং ১৩১২' : 'Est. 2021 | Reg: No 1312'}
                   </span>
                 </div>
               </div>
 
-              {/* Slogan badge callout */}
-              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 relative overflow-hidden group text-left">
-                <div className="absolute top-0 right-0 w-16 h-16 bg-[#e11922]/5 rounded-full filter blur-md"></div>
-                <span className="text-xs text-slate-400 block uppercase tracking-widest font-mono">Our Sole Slogan</span>
-                <p className="text-base font-extrabold text-brand-red mt-1 leading-snug">
-                  {lang === 'bn' ? '"খামার ও খামারির আস্থায়"' : '"Stay with Farms & Farmers"'}
+              {/* Slogan: Sleek quote block instead of heavy card */}
+              <div className="relative pl-6 border-l-2 border-brand-red/40 py-2">
+                <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold block mb-1 font-mono">
+                  {lang === 'bn' ? 'আমাদের মূল স্লোগান' : 'Our Sole Slogan'}
+                </span>
+                <p className="text-xl font-extrabold text-slate-900 leading-tight">
+                  {lang === 'bn' ? '“খামার ও খামারির আস্থায়”' : '“Stay with Farms & Farmers”'}
                 </p>
-                <p className="text-xs text-slate-650 mt-2 leading-relaxed">
+                <p className="text-sm text-slate-600 mt-2.5 leading-relaxed font-sans">
                   {lang === 'bn' 
                     ? 'চাষিদের সমৃদ্ধি এবং নিরাপদ মাছ সকলের পাতে পৌঁছে দেওয়াই আমাদের প্রতিটি ওষুধ ও প্রোবায়োটিকের প্রধান সংকল্প।'
                     : 'The prosperity of farmers and supplying clean, safe seafood to every dining table is our absolute priority.'}
                 </p>
               </div>
 
-              {/* Badges matrix */}
-              <div className="grid grid-cols-2 gap-3 pt-2">
-                <div className="p-3 rounded-2xl bg-white border border-slate-200 text-center">
-                  <span className="block text-xl font-bold text-slate-900">১০০%</span>
-                  <span className="text-[10px] text-slate-500 mt-0.5 block font-semibold">{lang === 'bn' ? 'অর্গানিক উপাদান' : 'Bio Organic Ingredients'}</span>
+              {/* Badges matrix: Subtle pill tags or simple clean blocks without heavy borders */}
+              <div className="grid grid-cols-2 gap-4 pt-2">
+                <div className="p-4 rounded-2xl bg-slate-50/80 border border-slate-100/80 text-left">
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    <span className="text-xs text-slate-500 font-semibold uppercase tracking-wider font-sans">
+                      {lang === 'bn' ? 'প্রাকৃতিক উপাদান' : 'Ingredients'}
+                    </span>
+                  </div>
+                  <span className="text-2xl font-black text-slate-900 block leading-none">১০০%</span>
+                  <span className="text-xs text-slate-650 mt-1 block font-sans">
+                    {lang === 'bn' ? 'অর্গানিক ও নিরাপদ' : 'Organic & Safe'}
+                  </span>
                 </div>
-                <div className="p-3 rounded-2xl bg-white border border-slate-200 text-center">
-                  <span className="block text-xl font-bold text-brand-red">{lang === 'bn' ? 'তথ্য ও' : 'Info &'}</span>
-                  <span className="text-[10px] text-slate-500 mt-0.5 block font-semibold">{lang === 'bn' ? 'সহায়তা' : 'Help & Support'}</span>
+
+                <div className="p-4 rounded-2xl bg-slate-50/80 border border-slate-100/80 text-left">
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="w-2 h-2 rounded-full bg-brand-red"></span>
+                    <span className="text-xs text-slate-500 font-semibold uppercase tracking-wider font-sans">
+                      {lang === 'bn' ? 'সার্বক্ষণিক' : 'Availability'}
+                    </span>
+                  </div>
+                  <span className="text-2xl font-black text-brand-red block leading-none">
+                    {lang === 'bn' ? 'সহায়তা' : 'Support'}
+                  </span>
+                  <span className="text-xs text-slate-650 mt-1 block font-sans">
+                    {lang === 'bn' ? 'অভিজ্ঞ পরামর্শক প্যানেল' : 'Expert Panel'}
+                  </span>
                 </div>
               </div>
             </div>
@@ -168,7 +190,7 @@ export default function About({ lang }: AboutProps) {
                 const item = lang === 'bn' ? point.bn : point.en;
                 return (
                   <div key={index} className="flex gap-4 items-start p-4 hover:bg-slate-100/50 rounded-xl transition-all text-left">
-                    <div className="p-3 rounded-xl bg-white border border-slate-200 shrink-0">
+                    <div className="p-3 rounded-xl bg-brand-red/5 shrink-0 text-brand-red">
                       {point.icon}
                     </div>
                     <div>
