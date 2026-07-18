@@ -12,6 +12,9 @@ export interface ProductDetails {
   optimalTime?: string;
   specialNote?: string;
   storage?: string;
+  symptoms?: string[];
+  precautions?: string[];
+  statutoryWarning?: string;
 }
 
 export interface Product {
@@ -493,34 +496,58 @@ export const PRODUCTS: Product[] = [
       bn: 'এক্সপার্ট বায়োসাইন্স লিমিটেড'
     },
     en: {
-      title: 'Paratin Ivermectin 3%',
-      category: 'Ectoparasitic Control',
-      description: 'Effective pharmacological solution specifically formulated to eliminate external lice, anchor worms, and gill parasite pests.',
-      composition: 'Concentrated Ivermectin 3% active solution.',
+      title: 'Paratin (Ivermectin 3% Solution)',
+      category: 'Effective Parasite Killer',
+      description: 'Paratin is an anti-parasitic drug that is commonly used in both aquaculture and other animals to treat a variety of parasitic infections. It works by paralyzing and killing parasites. It paralyzes parasites by modulating GABA-mediated chloride channels, providing the most effective solution for parasite control in fish, shrimp, and other aquatic species.',
+      composition: 'Ivermectin 3.00%, Excipients & Others 97.00%',
       benefits: [
-        'Permanently eradicates Argulus (fish lice) and Lernaea parasite pests.',
-        'Stops body rubbing and itching behaviors indicating skin stress.',
-        'Ensures healthy scale restoration after ticks have left fish skin.',
-        'Safe for rui, catla, mrigal, catfish, and snakeheads at targeted doses.'
+        'Rapidly destroys all types of harmful endoparasites and ectoparasites.',
+        'Incredibly successful in treating skin and gill infections.',
+        'Plays an active role in controlling wound and ulcer diseases.',
+        'Acts as a highly effective antifungal agent.',
+        'Parasites like Ticks, Mites & Acaridae cannot develop resistance against Paratin.',
+        'Quickly paralyzes and eliminates parasite hosts.'
       ],
-      dosage: '100 ml per acre with 3-4 feet of water depth. Mix with adequate water and broadcast carefully.',
-      packSize: '100 ML / 500 ML Bottle',
-      origin: 'India Formulation'
+      symptoms: [
+        'Lice attach to the body, back, and fins of the fish.',
+        'Scales fall off and the parasite inserts its stylet, sucking blood and causing lesions.',
+        'Fish swim near the pond edges or rub their bodies against hard objects.',
+        'Fish strike their tails and jump around due to severe irritation.',
+        'Severe infestations can cause mortality, and the infected area becomes reddish.'
+      ],
+      dosage: '1 ml per Decimal for 3-5 ft water depth.\n\nOr, as recommended by an aquaculture expert.',
+      packSize: '100 ml & 500 ml Bottles',
+      origin: 'China 🇨🇳',
+      optimalTime: 'It is best to apply the parasiticide in good weather between 3:00 PM and 4:00 PM.',
+      specialNote: 'Paratin does not accumulate in fish tissue. Therefore, it is safe for fish and shrimp. Fish or shrimp treated with Paratin is completely safe for human consumption.',
+      storage: 'Store in a cool and dry place away from light.'
     },
     bn: {
-      title: 'Paratin - প্যারাটিন আইভারমেকটিন ৩%',
-      category: 'পরজীবী ও উকুন নাশক ওষুধ',
-      description: 'মাছ ও চিংড়ির গায়ের ক্ষতিকর উকুন (Argulus), সুতা পোকা বা নোঙর পোকা দমনে অত্যন্ত কার্যকারী আইভারমেকটিন প্রযুক্তি।',
-      composition: 'আইভারমেকটিন ৩% প্রিমিয়াম গ্রেড সলিউশন।',
+      title: 'প্যারাটিন (Paratin)',
+      category: 'কার্যকর পরজীবীনাশক',
+      description: 'প্যারাটিন (Paratin) উকুন (Argulus), আঠালি (Ticks), মাইটস (Mites), শুঁককীট (Maggots) ও অন্যান্য বহিঃপরজীবীর মাধ্যমে মাছে ও অন্যান্য প্রাণীদেহে রক্তস্বল্পতা, পুষ্টিহীনতা এবং দেহের বিভিন্ন অংশে ক্ষত ও ত্বকজনিত রোগ দেখা যায়। প্যারাটিন (Paratin) কৃমি, উকুন, কীট, পোকা ইত্যাদি সব ধরনের অন্তঃপরজীবী ও বহিঃপরজীবী দ্রুত ধ্বংস করে দেহকে রক্ষা করে। মূলত প্যারাটিন (Paratin) গাবা মিডিয়েটেড ক্লোরাইড আয়নের পরিচালনের মাধ্যমে পরজীবীদের (Parasites) অবশ করে ও পরবর্তীতে ধ্বংস করে। এটি মাছ, চিংড়ি ও অন্যান্য সকল প্রাণীর ক্ষেত্রে পরজীবী নিধনে সর্বোপেক্ষা কার্যকর সমাধান।',
+      composition: 'আইভারমেকটিন ৩.০০%, এক্সিপিয়েন্টস ও অন্যান্য ৯৭.০০%',
       benefits: [
-        'মাছের পরজীবীজনিত উকুন ও সুতার মতো নোঙর পোকা নিমেষেই দমন করে।',
-        'মাছের চুলকানি, শরীর বাঁকা করে চলা বা বাঁশের খুঁটিতে ঘষা আচরণ বন্ধ করে।',
-        'পুকুরকে উকুন ও ক্ষতিকর কীটমুক্ত রাখে যা মাছের সুস্থ দীর্ঘায়ু বাড়ায়।',
-        'চিংড়ি ও রুই জাতীয় মাছের দৈনিক বৃদ্ধি ও খাবার গ্রহণের গতি দ্বিগুণ করে দেয়।'
+        'সব ধরনের ক্ষতিকারক অন্তঃপরজীবী ও বহিঃপরজীবী দ্রুত ধ্বংস করে।',
+        'ত্বক ও ফুলকার চিকিৎসায় অবিশ্বাস্য হারে সফল।',
+        'ক্ষতরোগ নিয়ন্ত্রণে কার্যকর ভূমিকা পালন করে।',
+        'এন্টিফাঙ্গাল হিসেবে কাজ করে।',
+        'Ticks, Mites & Acaridas ইত্যাদি প্যারাটিন (Paratin) এর বিরুদ্ধে কোন প্রতিরোধ সৃষ্টি করতে পারে না।',
+        'দ্রুত পরজীবীদের অবশ করে দেয়।'
       ],
-      dosage: 'প্রতি একরে ১০০ মিলি (৩-৪ ফুট পানির গভীরতায়)। পানির সাথে গুলিয়ে সমানভাবে ছড়িয়ে দিন।',
-      packSize: '১০০ মিলি বোতল',
-      origin: 'ভারত ফর্মুলেশন'
+      symptoms: [
+        'উকুন মাছের দেহে, পৃষ্ঠে ও পাখনায় লেগে থাকে।',
+        'আঁইশ খসে পড়ে এবং শূল প্রবেশ করানো থাকে। রক্ত চুষে ক্ষত সৃষ্টি করে।',
+        'মাছ খামারের কিনারায় এসে বা শক্ত কিছুর সাথে ঘষাঘষি করে।',
+        'যন্ত্রণায় লেজ বাড়ি মারে ও লাফালাফি করে।',
+        'অধিক আক্রান্তে মাছের মৃত্যুও ঘটে। আক্রান্ত স্থানের চারপাশ লালচে বর্ণ হয়।'
+      ],
+      dosage: '১ মি.লি./শতকে, ৩-৫ ফুট পানির গভীরতায়।\n\nঅথবা বিশেষজ্ঞের পরামর্শ অনুযায়ী ব্যবহার্য।',
+      packSize: '১০০ মি.লি. ও ৫০০ মি.লি.',
+      origin: 'চীন 🇨🇳',
+      optimalTime: 'ভালো আবহাওয়ায় বিকেল ৩টা থেকে ৪টার মধ্যে উকুননাশক প্রয়োগ করা উত্তম।',
+      specialNote: 'প্যারাটিন (Paratin) মাছের টিস্যুতে জমা হয় না। তাই এটি মাছের ও চিংড়ির জন্য নিরাপদ। প্যারাটিন (Paratin) ব্যবহৃত মাছ বা চিংড়ি খাওয়া মানুষের জন্য সম্পূর্ণ নিরাপদ।',
+      storage: 'আলো থেকে দূরে, শুষ্ক ও ঠান্ডা স্থানে সংরক্ষণ করুন।'
     }
   },
   {
@@ -665,6 +692,66 @@ export const PRODUCTS: Product[] = [
       packSize: '৫০ মি.লি., ১০০ মি.লি. ও ৫০০ মি.লি.',
       origin: 'চীন 🇨🇳',
       storage: 'আলো থেকে দূরে, শুষ্ক ও ঠান্ডা স্থানে সংরক্ষণ করুন। শিশুদের নাগালের বাইরে রাখুন।'
+    }
+  },
+  {
+    id: 'killer-phos',
+    imagePlaceholderColor: 'from-amber-500 to-red-600',
+    iconType: 'disinfectant',
+    bgGrad: 'rgba(239, 68, 68, 0.1)',
+    marketedBy: {
+      en: 'Expert Bioscience Limited',
+      bn: 'এক্সপার্ট বায়োসাইন্স লিমিটেড'
+    },
+    en: {
+      title: 'Killer Phos (Quinalphos 25% E.C.)',
+      category: 'Powerful & Effective Insecticide',
+      description: 'Killer Phos is a highly effective organophosphate insecticide. It is widely used to control various harmful insect pests on crops, and to eliminate unwanted wild fish (like Chanda, Bele, etc.), white-blooded insects, and other pests in aquaculture ponds. Killer Phos primarily acts by disrupting the nervous system and stomach, effectively destroying insect life across all developmental stages: eggs, larvae, and adults.',
+      composition: 'Quinalphos 25% E.C.',
+      benefits: [
+        'Highly effective organophosphate insecticide with broad-spectrum control.',
+        'Successfully eliminates unwanted predatory fish, white-blooded species, and pests in ponds.',
+        'Extremely beneficial for preparation of culture and rearing ponds.',
+        'Acts as a rapid stomach and contact poison to neutralize insect nervous systems.',
+        'Eradicates insect pests at all lifespans including eggs, larvae, and adult stages.'
+      ],
+      dosage: 'Fish Cultivation: 2-3 ml per Decimal for 3-5 ft water depth.\n\nCrops: Mix 2-3 ml per liter of water and spray in the morning or afternoon. Repeat after 7-10 days if necessary.\n\n* Or as recommended by an aquaculture expert.',
+      packSize: '100 ml & 500 ml',
+      origin: 'India 🇮🇳',
+      storage: 'Store in a cool and dry place away from direct sunlight. Keep out of reach of children.',
+      precautions: [
+        'Avoid smoking, eating, or drinking water while handling Killer Phos.',
+        'Always wear protective clothing, mask, and safety goggles during application.',
+        'Bury the empty bottle deep in the ground after use.',
+        'Wash hands, feet, face, and clothes thoroughly with soap after application.',
+        'Keep far away from food and out of reach of children.'
+      ],
+      statutoryWarning: 'Always follow safety guidelines and protective instructions during use.'
+    },
+    bn: {
+      title: 'কিলার ফস (Killer Phos)',
+      category: 'শক্তিশালী ও কার্যকর কীটনাশক',
+      description: 'কিলার ফস (Killer Phos) একটি অর্গানোফসফেট কীটনাশক যা ফসলের বিভিন্ন ধরনের পোকামাকড় এবং চাষের পুকুরে বিদ্যমান অবাঞ্ছিত চান্দা, বেলে বা সাদা রক্ত বিশিষ্ট মাছ, চিংড়ি ও ক্ষতিকর কীট দমনে ব্যবহৃত হয়। কিলার ফস মূলত প্রাণীর পাকস্থলী বা নার্ভাস সিস্টেম অকার্যকর করার মাধ্যমে ডিম, লার্ভা ও পূর্ণাঙ্গ পোকা ধ্বংস করে।',
+      composition: 'কুইনালফস ২৫% ইসি (Quinalphos 25% E.C.)',
+      benefits: [
+        'শক্তিশালী ও অত্যন্ত কার্যকর অর্গানোফসফেট কীটনাশক।',
+        'পুকুরে অবাঞ্ছিত চান্দা, বেলে বা সাদা রক্ত বিশিষ্ট মাছ ও ক্ষতিকর কীট সফলভাবে দমন করে।',
+        'চিংড়ি খামার এবং নার্সিং পুকুরের ক্ষতিকর পোকা দমনে অত্যন্ত উপযোগী।',
+        'পোকার পাকস্থলী ও নার্ভাস সিস্টেম অকার্যকর করে স্পর্শক ও পাকস্থলী বিষ হিসেবে কাজ করে।',
+        'কীটপতঙ্গের ডিম, লার্ভা ও পূর্ণাঙ্গ পোকা সব পর্যায়ে ধ্বংস করে।'
+      ],
+      dosage: 'মাছ চাষে: ২-৩ মি.লি., প্রতি শতকে ৩-৫ ফুট পানির গভীরতায়।\n\nফসলে: ১ লিটার পানির সাথে ২-৩ মি.লি. মিশিয়ে সকালে বা বিকেলে স্প্রে করুন। ৭-১০ দিন পর একই মাত্রায় দ্বিতীয় ডোজ প্রয়োগ করুন।\n\n* অথবা মৎস্য বিশেষজ্ঞের পরামর্শ অনুযায়ী ব্যবহার্য।',
+      packSize: '১০০ মি.লি. ও ৫০০ মি.লি.',
+      origin: 'ভারত 🇮🇳',
+      storage: 'আলো থেকে দূরে, শুষ্ক ও ঠান্ডা স্থানে সংরক্ষণ করুন। শিশুদের নাগালের বাইরে রাখুন।',
+      precautions: [
+        'কিলার ফস (Killer Phos) ব্যবহার করার সময় ধূমপান, খাবার ও পানি গ্রহণ থেকে বিরত থাকুন।',
+        'প্রয়োগের সময় নিরাপত্তা পোশাক, মাস্ক ও চশমা পরিধান করুন।',
+        'প্রয়োগের পর খালি বোতল মাটিতে পুঁতে রাখুন।',
+        'ব্যবহার শেষে হাত-পা, মুখ ও পোশাক সাবান দিয়ে ভালোভাবে ধুয়ে ফেলুন।',
+        'খাদ্যসামগ্রী থেকে দূরে ও শিশুদের নাগালের বাইরে রাখুন।'
+      ],
+      statutoryWarning: 'ব্যবহারের সময় সুরক্ষা নির্দেশনা মেনে চলুন।'
     }
   }
 ];

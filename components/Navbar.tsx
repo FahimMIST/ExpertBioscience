@@ -48,13 +48,13 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3">
             {/* Downloaded Logo Image */}
-            <div className="relative flex items-center justify-center w-16 h-16 bg-transparent overflow-hidden shrink-0">
+            <div className="relative flex items-center justify-center w-14 h-14 bg-transparent overflow-hidden shrink-0">
               <Image
                 src="/expertbioscience_logo.png"
                 alt="Expert BioScience Logo"
-                width={64}
-                height={64}
-                className="w-full h-full object-contain mix-blend-multiply"
+                width={56}
+                height={56}
+                className="w-full h-full object-contain"
                 referrerPolicy="no-referrer"
               />
             </div>

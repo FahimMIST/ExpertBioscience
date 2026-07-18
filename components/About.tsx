@@ -63,12 +63,12 @@ export default function About({ lang }: AboutProps) {
               {/* Profile header with subtle layout */}
               <div className="flex items-center gap-4">
                 {/* Real Logo Image - integrated and clean */}
-                <div className="w-16 h-16 bg-transparent flex items-center justify-center shrink-0 overflow-hidden">
+                <div className="w-14 h-14 bg-transparent flex items-center justify-center shrink-0 overflow-hidden">
                   <Image
                     src="/expertbioscience_logo.png"
                     alt="EBL Logo"
-                    width={64}
-                    height={64}
+                    width={56}
+                    height={56}
                     className="w-full h-full object-contain"
                     referrerPolicy="no-referrer"
                   />

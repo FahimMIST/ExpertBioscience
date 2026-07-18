@@ -677,6 +677,23 @@ export default function ProductDetailClient({ id }: { id: string }) {
                     ))}
                   </ul>
                 </div>
+
+                {details.symptoms && details.symptoms.length > 0 && (
+                  <div className="space-y-3 pt-4 border-t border-slate-200/60">
+                    <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm uppercase tracking-wide border-b border-slate-150 pb-1 flex items-center gap-1.5">
+                      <AlertTriangle size={16} className="text-amber-500 shrink-0" />
+                      {lang === 'bn' ? 'আক্রান্ত হওয়ার লক্ষণসমূহ' : 'Symptoms of Infection'}
+                    </h4>
+                    <ul className="space-y-2.5">
+                      {details.symptoms.map((symptom, i) => (
+                        <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700">
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2 shrink-0 animate-pulse" />
+                          <span>{symptom}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
 
               {/* Card 2: Application, Dosage & Mode of Action */}
@@ -724,20 +741,60 @@ export default function ProductDetailClient({ id }: { id: string }) {
                           {lang === 'bn' ? '* প্রয়োজনে, বিশেষজ্ঞের পরামর্শ অনুযায়ী ব্যবহার্য।' : '* If needed, use as recommended by an aquaculture expert.'}
                         </p>
                       </div>
+                    ) : product.id === 'killer-phos' ? (
+                      <div>
+                        <div className="overflow-x-auto mt-3 rounded-xl border border-slate-200 bg-white">
+                          <table className="min-w-full divide-y divide-slate-200 text-xs sm:text-sm text-left">
+                            <thead className="bg-slate-50">
+                              <tr>
+                                <th className="px-3.5 py-2.5 font-black text-slate-700 uppercase tracking-wider">{lang === 'bn' ? 'চাষের ধরন / ফসল' : 'Application / Sector'}</th>
+                                <th className="px-3.5 py-2.5 font-black text-slate-700 uppercase tracking-wider">{lang === 'bn' ? 'মাত্রা' : 'Dosage'}</th>
+                                <th className="px-3.5 py-2.5 font-black text-slate-700 uppercase tracking-wider">{lang === 'bn' ? 'প্রয়োগ পদ্ধতি ও ফ্রিকোয়েন্সি' : 'Application Method & Notes'}</th>
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-slate-200 font-bold text-slate-600 bg-white">
+                              <tr>
+                                <td className="px-3.5 py-3 whitespace-nowrap text-slate-900 font-extrabold">{lang === 'bn' ? 'ফসলে (Crops)' : 'Crops'}</td>
+                                <td className="px-3.5 py-3 text-[#e11922] font-black">{lang === 'bn' ? '১ লিটার পানির সাথে ২-৩ মি.লি.' : '2-3 ml per Liter of water'}</td>
+                                <td className="px-3.5 py-3 text-slate-500 font-semibold">{lang === 'bn' ? 'সকালে বা বিকেলে স্প্রে করুন। ৭-১০ দিন পর একই মাত্রায় দ্বিতীয় ডোজ প্রয়োগ করুন।' : 'Spray in the morning or afternoon. Apply second dose after 7-10 days.'}</td>
+                              </tr>
+                              <tr>
+                                <td className="px-3.5 py-3 whitespace-nowrap text-slate-900 font-extrabold">{lang === 'bn' ? 'মাছ চাষে (Aquaculture)' : 'Fish Cultivation'}</td>
+                                <td className="px-3.5 py-3 text-[#e11922] font-black">{lang === 'bn' ? 'প্রতি শতকে ২-৩ মি.লি. (৩-৫ ফুট গভীরতায়)' : '2-3 ml per Decimal (for 3-5 ft depth)'}</td>
+                                <td className="px-3.5 py-3 text-slate-500 font-semibold">{lang === 'bn' ? 'অথবা বিশেষজ্ঞের পরামর্শ অনুযায়ী ব্যবহার্য।' : 'Or as recommended by an aquaculture expert.'}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div className="mt-3 p-3.5 rounded-xl bg-red-50 border border-red-200 text-xs font-bold text-red-800 leading-relaxed flex items-start gap-2">
+                          <span className="w-2 h-2 rounded-full bg-red-500 shrink-0 mt-1.5 animate-pulse" />
+                          <p>
+                            {lang === 'bn' ? (
+                              <strong>চিংড়ির খামারে, যেকোনো নার্সিং পুকুরে, চাপিলা/পাবদা মাছের খামারে এবং যেকোনো পোনা মাছের পুকুরে প্রয়োগ সম্পূর্ণ নিষেধ।</strong>
+                            ) : (
+                              <strong>Strictly prohibited in shrimp farms, any nursing/nursery ponds, Chapila/Pabda fish farms, and any fry rearing ponds.</strong>
+                            )}
+                          </p>
+                        </div>
+                      </div>
                     ) : (
                       <p className="text-slate-700 text-xs sm:text-sm font-semibold leading-relaxed whitespace-pre-line">{details.dosage}</p>
                     )}
                   </div>
 
-                  {/* Deltam Caution Box */}
-                  {product.id === 'deltam' && (
+                  {/* Precautions / Caution Box */}
+                  {(product.id === 'deltam' || (details.precautions && details.precautions.length > 0)) && (
                     <div className="p-5 rounded-2xl bg-amber-50 border-2 border-amber-400 space-y-3">
                       <strong className="text-amber-800 font-black uppercase text-xs tracking-wider flex items-center gap-1.5 font-sans">
                         <AlertTriangle size={16} className="text-amber-600 animate-pulse" />
                         {lang === 'bn' ? 'সাবধানতা / সতর্কতা:' : 'Precautions / Caution:'}
                       </strong>
                       <ul className="list-disc list-inside text-xs sm:text-sm text-amber-900 space-y-1.5 font-bold leading-relaxed">
-                        {lang === 'bn' ? (
+                        {details.precautions && details.precautions.length > 0 ? (
+                          details.precautions.map((item, idx) => (
+                            <li key={idx}>{item}</li>
+                          ))
+                        ) : lang === 'bn' ? (
                           <>
                             <li>শিশুদের নাগালের বাইরে রাখুন।</li>
                             <li>ডেল্টাম (Deltam) ব্যবহারকালীন ধূমপান বা কোন কিছু খাওয়া থেকে বিরত থাকুন।</li>
@@ -753,6 +810,15 @@ export default function ProductDetailClient({ id }: { id: string }) {
                           </>
                         )}
                       </ul>
+                      {details.statutoryWarning && (
+                        <div className="pt-2.5 mt-2.5 border-t border-amber-200 text-xs text-amber-700/90 font-bold font-sans flex items-center gap-1.5 uppercase tracking-wide">
+                          <span className="w-2 h-2 rounded-full bg-red-500 shrink-0" />
+                          <span>
+                            {lang === 'bn' ? 'সংবিধিবদ্ধ সতর্কীকরণ: ' : 'Statutory Warning: '}
+                            {details.statutoryWarning}
+                          </span>
+                        </div>
+                      )}
                     </div>
                   )}
 

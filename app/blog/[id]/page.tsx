@@ -81,5 +81,42 @@ export default async function BlogDetailPage({ params }: Props) {
     notFound();
   }
 
-  return <BlogDetailPageClient post={post} />;
+  const blogPostSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.en.title,
+    alternativeHeadline: post.bn.title,
+    description: post.en.summary,
+    datePublished: new Date(post.publishDate).toISOString(),
+    author: {
+      '@type': 'Organization',
+      name: 'Expert BioScience Limited',
+      url: 'https://expertbioscience.com',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Expert BioScience Limited',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://expertbioscience.com/icon.svg',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://expertbioscience.com/blog/${id}`,
+    },
+    articleSection: post.en.category,
+    wordCount: post.en.content.join(' ').split(/\s+/).length,
+    articleBody: post.en.content.join(' '),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema) }}
+      />
+      <BlogDetailPageClient post={post} />
+    </>
+  );
 }
