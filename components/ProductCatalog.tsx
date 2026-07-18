@@ -152,10 +152,7 @@ export default function ProductCatalog({ lang }: ProductCatalogProps) {
                       {/* Ripple backgrounds */}
                       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
                       
-                      <div className="flex items-center justify-between z-10">
-                        <div className="flex items-center gap-1 bg-[#e11922] px-2 py-0.5 rounded-md text-[9px] font-bold text-white shadow-sm border border-white/10">
-                          {lang === 'bn' ? 'অরিজিনাল' : 'Premium'}
-                        </div>
+                      <div className="flex items-center justify-end z-10">
                         <span className="text-[11px] text-white font-black drop-shadow font-sans">EBL</span>
                       </div>
 
@@ -168,14 +165,11 @@ export default function ProductCatalog({ lang }: ProductCatalogProps) {
                         </span>
                       </div>
 
-                      <div className="flex items-center justify-between text-[10px] text-white/95 font-bold z-10 border-t border-white/10 pt-1.5">
+                      <div className="flex items-center text-[10px] text-white/95 font-bold z-10 border-t border-white/10 pt-1.5">
                         <div className="flex items-center gap-1">
                           <Weight size={10} />
                           <span>{details.packSize.split(' ')[0]} {details.packSize.split(' ')[1]}</span>
                         </div>
-                        <span className="text-[9px] bg-black/20 px-1.5 py-0.5 rounded text-white/90">
-                          {product.id === 'oxyadd' ? 'Active O2' : product.id === 'bioprob-max' ? '日本' : 'Global Spec'}
-                        </span>
                       </div>
                     </Link>
 

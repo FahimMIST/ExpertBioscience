@@ -126,14 +126,14 @@ ${formData.description || 'কোনো অতিরিক্ত বিবরণ
               {lang === 'bn' ? (
                 <>
                   মাছ বা ঘেরের সমস্যা? <br />
-                  <span className="bg-gradient-to-r from-brand-red to-slate-800 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-brand-red to-slate-800 bg-clip-text text-transparent inline-block py-1">
                     হোয়াটসঅ্যাপে তাৎক্ষণিক সমাধান!
                   </span>
                 </>
               ) : (
                 <>
                   Pond disease crisis? <br />
-                  <span className="bg-gradient-to-r from-brand-red to-slate-800 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-brand-red to-slate-800 bg-clip-text text-transparent inline-block py-1">
                     Get Instant WhatsApp Rx!
                   </span>
                 </>

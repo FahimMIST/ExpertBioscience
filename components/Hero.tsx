@@ -101,15 +101,15 @@ export default function Hero({ lang }: HeroProps) {
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
               {lang === 'bn' ? (
                 <>
-                  <span className="block text-slate-700">{text.headingPre.bn}</span>
-                  <span className="bg-gradient-to-r from-brand-red to-slate-900 bg-clip-text text-transparent block">
+                  <span className="block text-slate-700 pb-1">{text.headingPre.bn}</span>
+                  <span className="bg-gradient-to-r from-brand-red to-slate-900 bg-clip-text text-transparent block py-2 -my-2">
                     {text.headingHighlight.bn}
                   </span>
                 </>
               ) : (
                 <>
                   <span className="block text-slate-700">{text.headingPre.en}</span>
-                  <span className="bg-gradient-to-r from-brand-red to-slate-900 bg-clip-text text-transparent block">
+                  <span className="bg-gradient-to-r from-brand-red to-slate-900 bg-clip-text text-transparent block pb-1">
                     {text.headingHighlight.en}
                   </span>
                 </>

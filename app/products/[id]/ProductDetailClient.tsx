@@ -57,7 +57,7 @@ const PRODUCT_FAQS: Record<string, { en: FAQItem[]; bn: FAQItem[] }> = {
       { q: "Is Gasonull safe for fish and shrimp gills?", a: "Yes, Gasonull is a 100% natural organic formula. It actually helps heal gills by preventing gill rot (Black Gill) caused by intense nitrite and ammonia gas stress." }
     ],
     bn: [
-      { q: "দিনের কোন সময়েガスনিল বা গ্যাসোনাল প্রয়োগ করা সবচেয়ে ভালো?", a: "রৌদ্রোজ্জ্বল দিনগুলোতে সকাল ৯টা থেকে ১১টার মধ্যে অথবা বিকেলের দিকে গ্যাসোনাল প্রয়োগ করা সবচেয়ে উত্তম। এটি পুকুরের তলদেশের কাদা ও জৈব বর্জ্য গ্যাস তৈরিতে বাধা দেয়।" },
+      { q: "দিনের কোন সময়ে গ্যাসোনিল বা গ্যাসোনাল প্রয়োগ করা সবচেয়ে ভালো?", a: "রৌদ্রোজ্জ্বল দিনগুলোতে সকাল ৯টা থেকে ১১টার মধ্যে অথবা বিকেলের দিকে গ্যাসোনাল প্রয়োগ করা সবচেয়ে উত্তম। এটি পুকুরের তলদেশের কাদা ও জৈব বর্জ্য গ্যাস তৈরিতে বাধা দেয়।" },
       { q: "কালো কাদার তীব্র গন্ধ দূর করতে কি গ্যাসোনাল কাজ করবে?", a: "হ্যাঁ, খুব দ্রুত করবে! গ্যাসোনালের সক্রিয় উপাদানগুলো ক্ষতিকর গ্যাসগুলোর সাথে সরাসরি যুক্ত হয় এবং এগুলোকে পচনে সাহায্য করে তলদেশের কালো দাগ ও দুর্গন্ধ নিমিষেই দূর করে।" },
       { q: "এটি ব্যবহারের পর কি মাছ বা চিংড়ির ফুলকার কোনো ক্ষতি হয়?", a: "না, এটি শতভাগ প্রাকৃতিক হওয়ায় মাছ ও চিংড়ির জন্য সম্পূর্ণ নিরাপদ। উল্টো এটি অ্যামোনিয়া কমানোর মাধ্যমে ফুলকা পচা ও ফুলকা ফোলা রোগ থেকে মাছকে রক্ষা করতে দারুণ সহায়তা করে।" }
     ]
@@ -510,14 +510,11 @@ export default function ProductDetailClient({ id }: { id: string }) {
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between text-xs text-white/95 font-bold z-10 border-t border-white/20 pt-3">
+                  <div className="flex items-center text-xs text-white/95 font-bold z-10 border-t border-white/20 pt-3">
                     <div className="flex items-center gap-1">
                       <Weight size={12} />
                       <span className="tracking-wide uppercase font-black">{details.packSize}</span>
                     </div>
-                    <span className="text-[10px] bg-black/30 px-2.5 py-1 rounded-md text-white/90 font-mono uppercase tracking-widest">
-                      {product.id === 'oxyadd' ? 'Active Oxygen Agent' : 'Standard Bioscience'}
-                    </span>
                   </div>
                 </div>
               </div>

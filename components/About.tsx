@@ -142,14 +142,14 @@ export default function About({ lang }: AboutProps) {
                 {lang === 'bn' ? (
                   <>
                     আমরা খামারের সুস্থ সুরক্ষা <br />
-                    <span className="bg-gradient-to-r from-brand-red to-slate-900 bg-clip-text text-transparent">
+                    <span className="bg-gradient-to-r from-brand-red to-slate-900 bg-clip-text text-transparent inline-block py-1">
                       নিশ্চিতকরণে প্রতিশ্রুতিবদ্ধ
                     </span>
                   </>
                 ) : (
                   <>
                     Unwavering dedication to <br />
-                    <span className="bg-gradient-to-r from-brand-red to-slate-900 bg-clip-text text-transparent">
+                    <span className="bg-gradient-to-r from-brand-red to-slate-900 bg-clip-text text-transparent inline-block py-1">
                       sustainable aquaculture prosperity
                     </span>
                   </>

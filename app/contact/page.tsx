@@ -244,7 +244,7 @@ export default function ContactPage() {
 
                         <div>
                           <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5 pl-1">
-                            {lang === 'bn' ? 'আপনার समस्या বা জিজ্ঞাসা লিখুন *' : 'Your Note or Message *'}
+                            {lang === 'bn' ? 'আপনার সমস্যা বা জিজ্ঞাসা লিখুন *' : 'Your Note or Message *'}
                           </label>
                           <textarea
                             name="message"
