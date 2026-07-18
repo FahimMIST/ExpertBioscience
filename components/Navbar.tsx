@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Globe, PhoneCall } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 interface NavbarProps {
@@ -45,24 +46,28 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            {/* Red Gear Logo styled representing EBL Cogwheel */}
-            <div className="relative flex items-center justify-center w-11 h-11 bg-brand-red rounded-xl shadow-md shadow-brand-red/15">
-              {/* Outer Gear teeth */}
-              <div className="absolute inset-0 border-4 border-dashed border-white/20 rounded-xl animate-spin-slow"></div>
-              {/* Core letters EBL */}
-              <span className="font-sans font-bold text-lg text-white tracking-tighter col-span-1">EBL</span>
+          <Link href="/" className="flex items-center gap-3">
+            {/* Downloaded Logo Image */}
+            <div className="relative flex items-center justify-center w-14 h-14 bg-transparent overflow-hidden shrink-0">
+              <Image
+                src="/expertbioscience_logo.png"
+                alt="Expert BioScience Logo"
+                width={56}
+                height={56}
+                className="w-full h-full object-contain"
+                referrerPolicy="no-referrer"
+              />
             </div>
             
             {/* Logo text - bangla default togglable */}
-            <div className="flex flex-col select-none text-left">
+            <div className="flex flex-col select-none text-left justify-center">
               <span className="font-extrabold text-brand-red text-lg sm:text-xl md:text-xl tracking-tight leading-none">
                 {lang === 'bn' ? 'এক্সপার্ট' : 'Expert'}
               </span>
-              <span className="text-slate-950 font-bold text-xs sm:text-sm md:text-sm tracking-wide">
+              <span className="text-slate-950 font-bold text-xs sm:text-sm md:text-sm tracking-wide mt-1">
                 {lang === 'bn' ? 'বায়োসাইন্স লিমিটেড' : 'BioScience Limited'}
               </span>
-              <span className="hidden xs:inline-block text-[8px] sm:text-[9px] text-slate-500 font-sans tracking-widest uppercase font-semibold">
+              <span className="hidden xs:inline-block text-[8px] sm:text-[9px] text-slate-500 font-sans tracking-widest uppercase font-semibold mt-0.5">
                 {lang === 'bn' ? 'খামার ও খামারির আস্থায়' : 'Stay with Farms & Farmers'}
               </span>
             </div>

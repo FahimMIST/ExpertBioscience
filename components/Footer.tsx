@@ -3,6 +3,7 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Award, ArrowUp } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface FooterProps {
   lang: 'bn' | 'en';
@@ -20,16 +21,23 @@ export default function Footer({ lang }: FooterProps) {
           
           {/* Column 1: Brand Intro */}
           <div className="md:col-span-5 flex flex-col space-y-4">
-            <Link href="/" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-3">
               {/* Logo Replica */}
-              <div className="flex items-center justify-center w-10 h-10 bg-brand-red rounded-lg shadow-sm">
-                <span className="font-sans font-extrabold text-sm text-white tracking-widest">EBL</span>
+              <div className="flex items-center justify-center w-14 h-14 bg-transparent overflow-hidden shrink-0">
+                <Image
+                  src="/expertbioscience_logo.png"
+                  alt="Expert BioScience Logo"
+                  width={56}
+                  height={56}
+                  className="w-full h-full object-contain"
+                  referrerPolicy="no-referrer"
+                />
               </div>
-              <div className="flex flex-col text-left font-sans">
-                <span className="font-black text-brand-red text-lg leading-none">
+              <div className="flex flex-col text-left font-sans justify-center">
+                <span className="font-black text-brand-red text-xl leading-none">
                   {lang === 'bn' ? 'এক্সপার্ট' : 'Expert'}
                 </span>
-                <span className="text-slate-905 font-bold text-xs tracking-wider">
+                <span className="text-slate-905 font-bold text-xs sm:text-sm tracking-wide mt-1.5">
                   {lang === 'bn' ? 'বায়োসাইন্স লিমিটেড' : 'BioScience Limited'}
                 </span>
               </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Target, Landmark, ShieldCheck, HeartPulse, Sparkles, Sprout } from 'lucide-react';
 
 interface AboutProps {
@@ -61,12 +62,19 @@ export default function About({ lang }: AboutProps) {
             <div className="relative space-y-8 text-left">
               {/* Profile header with subtle layout */}
               <div className="flex items-center gap-4">
-                {/* stylized EBL Crest - integrated and clean */}
-                <div className="w-14 h-14 rounded-2xl bg-brand-red flex items-center justify-center font-black text-white text-xl tracking-wider shadow-sm shadow-brand-red/10 shrink-0">
-                  EBL
+                {/* Real Logo Image - integrated and clean */}
+                <div className="w-16 h-16 bg-transparent flex items-center justify-center shrink-0 overflow-hidden">
+                  <Image
+                    src="/expertbioscience_logo.png"
+                    alt="EBL Logo"
+                    width={64}
+                    height={64}
+                    className="w-full h-full object-contain"
+                    referrerPolicy="no-referrer"
+                  />
                 </div>
-                <div>
-                  <h4 className="text-lg font-bold text-slate-900 leading-tight">
+                <div className="flex flex-col justify-center">
+                  <h4 className="text-xl font-bold text-slate-900 leading-tight">
                     {lang === 'bn' ? 'এক্সপার্ট বায়োসাইন্স লিমিটেড' : 'Expert BioScience Ltd.'}
                   </h4>
                   <span className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold mt-1 block">
